@@ -40,7 +40,7 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-5 fw-bold">
-                      <h3>THÔNG TIN SẢN PHẨM</h3>
+                      <h3>THÔNG TIN LOẠI SẢN PHẨM</h3>
                     </div>
                   </div>
                 </div>
@@ -49,45 +49,28 @@
                     class="row gy-3 gy-md-4 overflow-hidden">
                     <div class="col-12">
                       <label for="email"
-                        class="form-label fw-bold">Tên sản phẩm
+                        class="form-label fw-bold">Mã loại
+                        <span
+                          class="text-danger">*</span></label>
+                      <input type="text"
+                        class="form-control"
+                        name="maLoai" id="text"
+                        placeholder=""
+                        required disabled>
+                    </div>
+                    <div class="col-12">
+                      <label for="email"
+                        class="form-label fw-bold">Tên loại
                         <span
                           class="text-danger">*</span></label>
                       <input type="name"
                         class="form-control"
-                        name="tenSP" id="name"
-                        placeholder="áo"
+                        name="tenLoai" id="name"
+                        placeholder=""
                         required>
                     </div>
-                    <div class="col-12">
-                      <label for="email"
-                        class="form-label fw-bold">Giá bán
-                        <span
-                          class="text-danger">*</span></label>
-                      <input type="text"
-                        class="form-control"
-                        name="giaBan" id="text"
-                        placeholder="500.000"
-                        required>
-                    </div>
-                    <div class="col-12">
-                      <label for="password"
-                        class="form-label fw-bold">Số lượng
-                        <span
-                          class="text-danger">*</span></label>
-                      <input type="text"
-                        class="form-control"
-                        name="number"
-                        id="number" placeholder="10"
-                        required>
-                    </div>
-                    <div class="col-12">
-                      <label for="password"
-                        class="form-label fw-bold">File hình ảnh
-                        <span
-                          class="text-danger">*</span></label>
-                      <input class="form-control" type="file" id="myFile"
-                        name="filename">
-                    </div>
+                    
+                    
                     <div class="col-12">
                       <div class="d-grid">
                         <button
@@ -104,7 +87,7 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-5">
-                      <h3>DANH SÁCH SẢN PHẨM</h3>
+                      <h3>DANH SÁCH LOẠI SẢN PHẨM</h3>
                     </div>
                   </div>
                 </div>
@@ -116,9 +99,9 @@
                       <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>Mã Sản Phẩm</th>
-                            <th>Tên Sản Phẩm</th>
-                            <th>Giá Bán</th>
+                            <th>Mã Loại Sản Phẩm</th>
+                            <th>Tên Loại Sản Phẩm</th>
+                            <th>Action</th>
                           
                         </tr>
                         </thead>
@@ -126,12 +109,11 @@
                           <?php
                             foreach ($list as $item) {
                               extract($item);
-                              $sua = "index.php?act=suaSp&MaSanPham= " .$MaSanPham;
-                              $xoa = "index.php?act=xoaSp&MaSanPham= " .$MaSanPham;
+                              $sua = "index.php?act=suaLoai&MaLoai= " .$MaLoai;
+                              $xoa = "index.php?act=xoaLoai&MaLoai= " .$MaLoai;
                               echo '<tr> 
-                              <td>'. $MaSanPham .'</td>
-                              <td>'. $TenSanPham .'</td>
-                              <td>'. $GiaBan .'<td>
+                              <td>'. $MaLoai .'</td>
+                              <td>'. $TenLoai .'</td>
                               <td><a href="' . $sua . '" ><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a> <a href="' . $xoa . '"><input class="btn btn-danger btn-sm" type="button" value="Xóa" name="" id=""> </a></td>
                               ';
                             }

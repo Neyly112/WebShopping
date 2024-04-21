@@ -1,9 +1,9 @@
 CREATE TABLE `NguoiDung` (
   `MaNguoiDung` int PRIMARY KEY,
-  `TenNguoiDung` nvarchar(255),
+  `TenNguoiDung` varchar(255),
   `SoDienThoai` varchar(255),
   `Email` varchar(255),
-  `DiaChi` nvarchar(255),
+  `DiaChi` varchar(255),
   `MatKhau` varchar(255),
   `VaiTro` varchar(255) COMMENT 'admin, user'
 );
@@ -11,15 +11,15 @@ CREATE TABLE `NguoiDung` (
 CREATE TABLE `SanPham` (
   `MaSanPham` int PRIMARY KEY,
   `MaLoai` int,
-  `TenSanPham` nvarchar(255),
+  `TenSanPham` varchar(255),
   `HinhAnh` longblob,
-  `MoTa` nvarchar(255),
+  `MoTa` varchar(255),
   `GiaBan` varchar(255)
 );
 
 CREATE TABLE `Loai` (
   `MaLoai` int PRIMARY KEY,
-  `TenLoai` nvarchar(255)
+  `TenLoai` varchar(255)
 );
 
 CREATE TABLE `GioHang` (
@@ -35,13 +35,17 @@ CREATE TABLE `SanPhamGioHang` (
 CREATE TABLE `DonHang` (
   `MaDonHang` int PRIMARY KEY,
   `NgayTao` date,
-  `PhuongThucThanhToan` nvarchar(255),
+  `PhuongThucThanhToan` varchar(255),
   `MaNguoiDung` int,
-  `HoTen` nvarchar(255),
+  `HoTen` varchar(255),
   `SoDienThoai` varchar(255),
-  `DiaChiGiaoHang` nvarchar(255),
+  `DiaChiGiaoHang` varchar(255),
   `TrangThai` varchar(255)
 );
+
+ALTER TABLE Loai MODIFY COLUMN MaLoai INT AUTO_INCREMENT;
+
+ALTER TABLE SanPham MODIFY COLUMN MaSanPham INT AUTO_INCREMENT;
 
 ALTER TABLE `SanPham` ADD FOREIGN KEY (`MaLoai`) REFERENCES `Loai` (`MaLoai`);
 

@@ -37,6 +37,9 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=gh">GIỎ HÀNG</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?act=dm">DANH MỤC</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               TÀI KHOẢN
