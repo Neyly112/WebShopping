@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `qlbh` ;
+USE `qlbh`;
+
 CREATE TABLE `NguoiDung` (
   `MaNguoiDung` int PRIMARY KEY,
   `TenNguoiDung` varchar(255),
@@ -22,12 +25,8 @@ CREATE TABLE `Loai` (
   `TenLoai` varchar(255)
 );
 
-CREATE TABLE `GioHang` (
-  `MaGioHang` int PRIMARY KEY
-);
-
 CREATE TABLE `SanPhamGioHang` (
-  `MaGioHang` int,
+  `MaGioHang` int PRIMARY KEY,
   `MaSanPham` int,
   `SoLuongMua` int
 );
@@ -42,17 +41,18 @@ CREATE TABLE `DonHang` (
   `DiaChiGiaoHang` varchar(255),
   `TrangThai` varchar(255)
 );
+CREATE TABLE IF NOT EXISTS `DsYeuThich` (
+  `MaSanPham` int PRIMARY KEY
+);
 
-ALTER TABLE Loai MODIFY COLUMN MaLoai INT AUTO_INCREMENT;
+INSERT INTO `Loai`(`MaLoai`, `TenLoai`) VALUES ('11','ao');
 
-ALTER TABLE SanPham MODIFY COLUMN MaSanPham INT AUTO_INCREMENT;
+ALTER TABLE `SanPham` MODIFY COLUMN MaSanPham INT AUTO_INCREMENT;
 
 ALTER TABLE `SanPham` ADD FOREIGN KEY (`MaLoai`) REFERENCES `Loai` (`MaLoai`);
 
-ALTER TABLE `GioHang` ADD FOREIGN KEY (`MaGioHang`) REFERENCES `SanPhamGioHang` (`MaGioHang`);
+ALTER TABLE `SanPhamGioHang` ADD FOREIGN KEY (`MaSanPham`) REFERENCES `SanPham` (`MaSanPham`);
 
-ALTER TABLE `SanPham` ADD FOREIGN KEY (`MaSanPham`) REFERENCES `SanPhamGioHang` (`MaSanPham`);
+ALTER TABLE `DonHang` ADD FOREIGN KEY (`MaNguoiDung`) REFERENCES `NguoiDung` (`MaNguoiDung`);
 
-ALTER TABLE `GioHang` ADD FOREIGN KEY (`MaGioHang`) REFERENCES `DonHang` (`MaDonHang`);
-
-ALTER TABLE `DonHang` ADD FOREIGN KEY (`MaDonHang`) REFERENCES `NguoiDung` (`MaNguoiDung`);
+ALTER TABLE `DsYeuThich` ADD FOREIGN KEY (`MaSanPham`) REFERENCES `SanPham` (`MaSanPham`);
