@@ -118,12 +118,23 @@
                         <tr>
                             <th>Mã Sản Phẩm</th>
                             <th>Tên Sản Phẩm</th>
-                          
                             <th>Giá Bán</th>
                           
                         </tr>
                         </thead>
                         <tbody>
+                          <?php
+                            foreach ($list as $item) {
+                              extract($item);
+                              echo '<tr> 
+                              <td>'. $MaSanPham .'</td>
+                              <td>'. $TenSanPham .'</td>
+                              <td>'. $GiaBan .'<td>
+                              <td><button class="btn btn-danger btn-sm" onclick="deleteStudent(this)">Xóa</button></td>
+                              ';
+                            }
+
+                          ?>
                         <tr>
                             <td>1</td>
                             <td>Áo</td>

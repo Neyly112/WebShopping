@@ -3,7 +3,7 @@
 // 1.0 function connect database
 function pdo_get_connect()
 {
-    $dburl = "mysql:host=localhost; dbname=demo; charset=utf8";
+    $dburl = "mysql:host=localhost; dbname=qlbh; charset=utf8";
     $username = 'root';
     $password = '';
 

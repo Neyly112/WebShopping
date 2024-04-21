@@ -1,74 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Trang chủ</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!--begin navbar-->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="sliders/LOGO_NEW.png" alt="Bootstrap"height="45">
-          </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">TRANG CHỦ</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              SẢN PHẨM
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
-              <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
-              <li><a class="dropdown-item" href="#">Thời trang trẻ em</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">NEW COLLECTION - SPRING</a></li>
-              <li><a class="dropdown-item" href="#">NEW COLLECTION - WINTER</a></li>
-            </ul>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gt">GIỚI THIỆU</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=tt">THÔNG TIN</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=yt">YÊU THÍCH</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gh">GIỎ HÀNG</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              TÀI KHOẢN
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="index.php?act=ttcn">Thông tin cá nhân</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dh">Đơn hàng của tôi</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dx">Đăng xuất</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
-              <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+
 <!--end navbar-->
 <!--Page content-->
 <div class="container mt-4">
@@ -95,7 +25,7 @@
           <div class="carousel-inner">
               <div class="carousel-item active"
                   data-bs-interval="2000">
-                  <img src="sliders/Beige and White Elegant Minimalist Fashion Clothing Brand Presentation.png" class="d-block w-100"
+                  <img src="./view/TrangChu/sliders/Beige and White Elegant Minimalist Fashion Clothing Brand Presentation.png" class="d-block w-100"
                       alt="...">
                   <div
                       class="carousel-caption d-none d-md-block">
@@ -103,14 +33,14 @@
               </div>
               <div class="carousel-item"
                   data-bs-interval="2000">
-                  <img src="sliders/2.png" class="d-block w-100"
+                  <img src="./view/TrangChu/sliders/2.png" class="d-block w-100"
                       alt="...">
                   <div
                       class="carousel-caption d-none d-md-block">
                   </div>
               </div>
               <div class="carousel-item">
-                  <img src="sliders/White Minimalist Latest Fashion Collection Facebook Cover.png" class="d-block w-100"
+                  <img src="./view/TrangChu/sliders/White Minimalist Latest Fashion Collection Facebook Cover.png" class="d-block w-100"
                       alt="...">
                   <div
                       class="carousel-caption d-none d-md-block">
@@ -143,7 +73,7 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="card" style="width: 18rem;">
-              <img src="products/Apparel and Accessories TikTok In-Feed Ad in White Grey Minimalist Monotone Style Mobile Video (1).jpg" class="card-img-top" alt="...">
+              <img src="./view/TrangChu/products/Apparel and Accessories TikTok In-Feed Ad in White Grey Minimalist Monotone Style Mobile Video (1).jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">JEUNESSE PLEATED MIDI DRESS - BEE</h5>
                 <p class="card-text" style="color: red;">10 000 000 VND</p>
@@ -163,7 +93,7 @@
 
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="card" style="width:   18rem;">
-                <img src="products/Apparel and Accessories TikTok In-Feed Ad in White Grey Minimalist Monotone Style Mobile Video.jpg" class="card-img-top" alt="...">
+                <img src="./view/TrangChu/products/Apparel and Accessories TikTok In-Feed Ad in White Grey Minimalist Monotone Style Mobile Video.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">TÚI ĐEO VAI TRICE METALIC ACCENT BELTED </h5>
                   <p class="card-text" style="color: red;">5 000 000 VND</p>
@@ -183,7 +113,7 @@
 
               <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card" style="width: 18rem;">
-                  <img src="products/Black and Grey Minimal Women Fashion Brand Your Story.png" class="card-img-top" alt="...">
+                  <img src="./view/TrangChu/products/Black and Grey Minimal Women Fashion Brand Your Story.png" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">ĐẦM SOLLIESS COTTON-ĐEN</h5>
                     <p class="card-text" style="color: red;">1 000 000 VND</p>
@@ -203,7 +133,7 @@
 
                 <div class="col-lg-3 col-md-6 mb-4">
                   <div class="card" style="width: 18rem;">
-                      <img src="products/Ecru White Modern Elegant Minimal Women_s Fashion Clothing Collection Instagram Story.png" class="card-img-top" alt="...">
+                      <img src="./view/TrangChu/products/Ecru White Modern Elegant Minimal Women_s Fashion Clothing Collection Instagram Story.png" class="card-img-top" alt="...">
                       <div class="card-body">
                           <h5 class="card-title">SET ÁO VÁY DEMIN MONSTER XANH</h5>
                           <p class="card-text" style="color: red;">2 000 000 VND</p>
@@ -251,7 +181,7 @@
                           <div class="row">
                               <div class="col-md-3 mb-3">
                                   <div class="card">
-                                      <img src="products/NAAU8636.jpg" class="card-img-top" alt="...">
+                                      <img src="./view/TrangChu/products/NAAU8636.jpg" class="card-img-top" alt="...">
                                       <div class="card-body">
                                         <h5 class="card-title">SET ÁO VÁY DEMIN MONSTER XANH</h5>
                                         <p class="card-text" style="color: red;">2 000 000 VND</p>
@@ -274,7 +204,7 @@
 
                               <div class="col-md-3 mb-3">
                                 <div class="card">
-                                    <img src="products/SKIRT.jpg" class="card-img-top" alt="...">
+                                    <img src="./view/TrangChu/products/SKIRT.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">SET ÁO VÁY DEMIN MONSTER XANH</h5>
                                       <p class="card-text" style="color: red;">2 000 000 VND</p>
@@ -296,7 +226,7 @@
 
                             <div class="col-md-3 mb-3">
                               <div class="card">
-                                  <img src="products/IMG_6526_result.webp" class="card-img-top" alt="...">
+                                  <img src="./view/TrangChu/products/IMG_6526_result.webp" class="card-img-top" alt="...">
                                   <div class="card-body">
                                       <h5 class="card-title">SET JADE PLAN TRẮNG-HỒNG</h5>
                                         <p class="card-text" style="color: red;">2 000 000 VND</p>
@@ -318,7 +248,7 @@
 
                           <div class="col-md-3 mb-3">
                             <div class="card">
-                                <img src="products/o1cn01eursme1mjthriwnru___2200631134990-0-cib_5194faeaddab44ac9b5f29d57bfb4ff6_1024x1024.jpg" class="card-img-top" alt="...">
+                                <img src="./view/TrangChu/products/o1cn01eursme1mjthriwnru___2200631134990-0-cib_5194faeaddab44ac9b5f29d57bfb4ff6_1024x1024.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                   <h5 class="card-title">QUẦN ÂU ỐNG LOE-ĐEN</h5>
                                   <p class="card-text" style="color: red;">500 000 VND</p>
@@ -340,7 +270,7 @@
                         <!-- dòng 2 -->
                         <div class="col-md-3 mb-3">
                           <div class="card">
-                              <img src="products/__-12_ee33ed7597524ab19fbe40c0d21493f8_1024x1024.JPG" class="card-img-top" alt="...">
+                              <img src="./view/TrangChu/products/__-12_ee33ed7597524ab19fbe40c0d21493f8_1024x1024.JPG" class="card-img-top" alt="...">
                               <div class="card-body">
                                 <h5 class="card-title">QUẦN JEAN ỐNG LOE NANO MICRO</h5>
                                 <p class="card-text" style="color: red;">600 000 VND</p>
@@ -362,7 +292,7 @@
 
                       <div class="col-md-3 mb-3">
                         <div class="card">
-                            <img src="products/QUANDEN.jpg" class="card-img-top" alt="...">
+                            <img src="./view/TrangChu/products/QUANDEN.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">QUẦN JEAN ỐNG LOE CẠP CAO </h5>
                               <p class="card-text" style="color: red;">450 000 VND</p>
@@ -384,7 +314,7 @@
 
                     <div class="col-md-3 mb-3">
                       <div class="card">
-                          <img src="products/__-18_c450514b5bcf4ff49ca19ba9a75d52b8_1024x1024.webp" class="card-img-top" alt="...">
+                          <img src="./view/TrangChu/products/__-18_c450514b5bcf4ff49ca19ba9a75d52b8_1024x1024.webp" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">QUẦN JEAN ỐNG LOE-NÂU</h5>
                             <p class="card-text" style="color: red;">500 000 VND</p>
@@ -406,7 +336,7 @@
 
                   <div class="col-md-3 mb-3">
                     <div class="card">
-                        <img src="products/__-12_7532a4063c714c05bc5108246f8d0e98_1024x1024.webp" class="card-img-top" alt="...">
+                        <img src="./view/TrangChu/products/__-12_7532a4063c714c05bc5108246f8d0e98_1024x1024.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">QUẦN JEAN ỐNG LOE NHIỀU TÚI-ĐEN</h5>
                           <p class="card-text" style="color: red;">500 000 VND</p>
