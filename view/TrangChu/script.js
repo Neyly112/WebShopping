@@ -1,7 +1,7 @@
 
  // script.js
-$(document).ready(function() {
-    $('#heart').click(function() {
+ $(document).ready(function() {
+    $('.bi-heart').click(function() {
         var MaSanPham = $(this).data('MaSanPham');
         $.ajax({
             url: 'add_to_favorites.php',
@@ -17,6 +17,8 @@ $(document).ready(function() {
         });
     });
 });
+
+
 
     
     $(document).ready(function() {

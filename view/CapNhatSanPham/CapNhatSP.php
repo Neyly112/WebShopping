@@ -132,7 +132,8 @@
                               <td>'. $MaSanPham .'</td>
                               <td>'. $TenSanPham .'</td>
                               <td>'. $GiaBan .'<td>
-                              <td><a href="' . $sua . '" ><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a> <a href="' . $xoa . '"><input class="btn btn-danger btn-sm" type="button" value="Xóa" name="" id=""> </a></td>
+                              <td><a href="' . $sua . '" ><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a> 
+                              <a href="' . $xoa . '"><input class="btn btn-danger btn-sm" type="button" value="Xóa" name="" id=""> </a></td>
                               ';
                             }
 

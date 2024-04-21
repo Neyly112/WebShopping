@@ -9,59 +9,69 @@
     <!-- Liên kết CSS Bootstrap bằng CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-
+<script src="xoa.js"></script>
 <body>
 
     <!-- Main content -->
     <div class="container">
-    <h1 style="text-align: center;">DANH SÁCH YÊU THÍCH</h1>
+        <h1 style="text-align: center;">DANH SÁCH YÊU THÍCH</h1>
 
 
         <?php
-        // Truy vấn database để lấy danh sách
-        // 1. Include file cấu hình kết nối đến database, khởi tạo kết nối $conn
+        $imageDirectory = "../../products/"; // Thay đổi đường dẫn tới thư mục chứa hình ảnh của sản phẩm
         include('./dbconnect.php');
 
         // 2. Chuẩn bị câu truy vấn $sql
-        $sql = "select SP.TenSanPham from `DsYeuThich` DSYT,`SanPham` SP where DSYT.MaSanPham=SP.MaSanPham";
+        $sql = "select SP.TenSanPham,SP.MaSanPham, SP.HinhAnh,SP.GiaBan from `DsYeuThich` DSYT,`SanPham` SP where DSYT.MaSanPham=SP.MaSanPham";
 
         // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
         $result = mysqli_query($conn, $sql);
 
-        // 4. Khi thực thi các truy vấn dạng SELECT, dữ liệu lấy về cần phải phân tách để sử dụng
-        // Thông thường, chúng ta sẽ sử dụng vòng lặp while để duyệt danh sách các dòng dữ liệu được SELECT
-        // Ta sẽ tạo 1 mảng array để chứa các dữ liệu được trả về
         $data = [];
         $rowNum = 1;
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $data[] = array(
-                'rowNum' => $rowNum, // sử dụng biến tự tăng để làm dữ liệu cột STT
+                'rowNum' => $rowNum, 
+                'MaSanPham' => $row['MaSanPham'],
+                'HinhAnh' => $row['HinhAnh'],
                 'TenSanPham' => $row['TenSanPham'],
-                'HinhAnh' => $row['HinhAnh']
+                'GiaBan' => $row['GiaBan']
+                
             );
             $rowNum++;
         }
         ?>
 
-        <table class="table table-borderd">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                     <td>STT</td>
+                    <td>Hình ảnh</td>
                     <td>Tên sản phẩm</td>
-                    //<td>Hình ảnh</td>
+                    <td>Gía bán</td>
+                    <td>Mã sản phẩm</td>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $row) : ?>
+                <?php foreach ($data as $row) :
+                        // Kết hợp đường dẫn đến thư mục chứa hình ảnh với tên tệp của hình ảnh
+                        $imagePath = $imageDirectory . $row['HinhAnh'];
+                    ?>
                     <tr>
                         <td><?php echo $row['rowNum']; ?></td>
+                     
+                        <td><img src="<?php echo $imagePath; ?>" alt="Product Image" style="max-width: 500px;"></td>
                         <td><?php echo $row['TenSanPham']; ?></td>
-                         <td><?php echo $row['HinhAnh']; ?></td>
+                        <td><?php echo $row['GiaBan']; ?></td>
+                        <td><?php echo $row['MaSanPham']; ?></td>
+                        
+                            <!-- Button Xóa -->
                         <td>
-                        <!-- Button Xóa -->
-                        <a href="xoa.php?id=<?php echo $row['TenSanPham']; ?>" id="btnDelete" class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>
+                            <button class="btn btn-danger btnDelete"id="delete" data-masanpham="<?php echo $row['MaSanPham']; ?>">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
