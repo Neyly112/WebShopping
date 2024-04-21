@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">TRANG CHỦ</a>
+            <a class="nav-link active" aria-current="page" href="index.php">TRANG CHỦ</a>
           </li>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,29 +36,29 @@
             </ul>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="#">GIỚI THIỆU</a>
+            <a class="nav-link" href="index.php?act=gt">GIỚI THIỆU</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">THÔNG TIN</a>
+            <a class="nav-link" href="index.php?act=tt">THÔNG TIN</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="#">YÊU THÍCH</a>
+            <a class="nav-link" href="index.php?act=yt">YÊU THÍCH</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Cart.html">GIỎ HÀNG</a>
+            <a class="nav-link" href="index.php?act=gh">GIỎ HÀNG</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               TÀI KHOẢN
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-              <li><a class="dropdown-item" href="#">Đơn hàng của tôi</a></li>
-              <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+              <li><a class="dropdown-item" href="index.php?act=ttcn">Thông tin cá nhân</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dh">Đơn hàng của tôi</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dx">Đăng xuất</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Quản lý đơn hàng</a></li>
-              <li><a class="dropdown-item" href="#">Quản lý sản phẩm</a></li>
+              <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
+              <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
             </ul>
           </li>
         </ul>
@@ -440,15 +440,5 @@
 
 <!--end Page content-->
         <!--footer-->
-        <footer class="py-3 my-4">
-          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-          </ul>
-          <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
-        </footer>
+        
         <!--end footer-->
-</body>
