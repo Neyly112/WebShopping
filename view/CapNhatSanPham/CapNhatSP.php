@@ -126,29 +126,18 @@
                           <?php
                             foreach ($list as $item) {
                               extract($item);
+                              $sua = "index.php?act=suaSp&MaSanPham= " .$MaSanPham;
+                              $xoa = "index.php?act=xoaSp&MaSanPham= " .$MaSanPham;
                               echo '<tr> 
                               <td>'. $MaSanPham .'</td>
                               <td>'. $TenSanPham .'</td>
                               <td>'. $GiaBan .'<td>
-                              <td><button class="btn btn-danger btn-sm" onclick="deleteStudent(this)">Xóa</button></td>
+                              <td><a href="' . $sua . '" ><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a> <a href="' . $xoa . '"><input class="btn btn-danger btn-sm" type="button" value="Xóa" name="" id=""> </a></td>
                               ';
                             }
 
                           ?>
-                        <tr>
-                            <td>1</td>
-                            <td>Áo</td>
-                            
-                            <td>100.000</td>
-                            <td><button class="btn btn-danger btn-sm" onclick="deleteStudent(this)">Xóa</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Quần</td>
-                          
-                            <td>100.000</td>
-                            <td><button class="btn btn-danger btn-sm" onclick="deleteStudent(this)">Xóa</button></td>
-                        </tr>
+                        
                         </tbody>
                     </table>
                     

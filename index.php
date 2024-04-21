@@ -39,16 +39,69 @@
                     }
                     $sql1 = "SELECT * FROM `sanpham`";
                     $list = pdo_query($sql1);
+                    
                     include "./view/CapNhatSanPham/CapNhatSP.php";
                     break;
+                case 'xoaSp':
+                    if (isset($_POST['tenSP'])) {
+                        $tenSP = $_POST['tenSP'];
+                        $giaBan = $_POST['giaBan'];
+                        $hinhAnh = $_POST['filename'];
+                        $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$hinhAnh', 'ao','$giaBan')";
+                        pdo_executer($sql);
+                        $thongbao = "Thêm Thành Công";
+                    }
+                    $sql1 = "SELECT * FROM `sanpham`";
+                    $list = pdo_query($sql1);
+                    
+                    
+                    if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
+                        $sql2 = "DELETE FROM `sanpham` WHERE MaSanPham=" . $_GET['MaSanPham'];
+                        pdo_executer($sql2);
+                    }
+                        //hien thị lại listphp
+                    
+                    $list = pdo_query($sql1);
+                    include "./view/CapNhatSanPham/CapNhatSP.php";
+                    break;
+                case 'suaSp':
+                    if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
+                        $sql = "SELECT * FROM `sanpham` WHERE MaSanPham=" . $_GET['MaSanPham'];
+                        $dm = pdo_query_one($sql);//chỉ lấy 1 truy vấn
+                    }
+                    include "./view/CapNhatSanPham/SuaSp.php";
+                    break;    
+                case 'capnhatSP':
+
+                    echo "heee";
+                    if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                        echo "heee";
+                        $TenSP = $_POST['ten'];
+                        $giaBan = $_POST['gia'];
+                        $MaSanPham = $_POST['MaSanPham'];
+                        $hinhAnh = $_POST['file'];
+                        $sql = "UPDATE `sanpham` SET `MaLoai`='11', `TenSanPham`='" .$TenSP. "',`HinhAnh`='" .$hinhAnh. "',`MoTa`='ao',`GiaBan`='" .$giaBan. "' WHERE MaSanPham=" .$MaSanPham;
+                        pdo_executer($sql);
+                        $thongbao = "Cập Nhật Thành Công";
+                    }
+                    
+                        //hien thị lại listphp
+                    $sql1 = "SELECT * FROM `sanpham`";
+                    $list = pdo_query($sql1);
+                    
+                    include "./view/CapNhatSanPham/CapNhatSP.php";
+                    break;          
+                case 'tc':
+                    include "./view/TrangChu/TrangChu.php";
             }
-           
+        
             
         }
-        
         else {
             include "./view/TrangChu/TrangChu.php";
         }
+        
+        
     ?>
 
 </div>
