@@ -123,6 +123,9 @@
             case 'tc':
                 include "./view/TrangChu/TrangChu.php";
                 break;
+            case 'gtyt':
+                include"./crud/crud_dsyeuthich/index.php";
+                break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";

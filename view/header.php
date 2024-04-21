@@ -24,9 +24,7 @@
               <li><a class="dropdown-item" href="#">NEW COLLECTION - WINTER</a></li>
             </ul>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gt">GIỚI THIỆU</a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=gttt">THÔNG TIN</a>
           </li>

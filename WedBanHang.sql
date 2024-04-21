@@ -15,7 +15,7 @@ CREATE TABLE `SanPham` (
   `MaSanPham` int PRIMARY KEY,
   `MaLoai` int,
   `TenSanPham` varchar(255),
-  `HinhAnh` longblob,
+  `HinhAnh` varchar(255),
   `MoTa` varchar(255),
   `GiaBan` varchar(255)
 );
