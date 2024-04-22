@@ -71,16 +71,9 @@
 
 <div class="row">
     <!-- Phần menu bên trái (1/3) -->
-    <div class="col-lg-3 mb-4">
-        <div class="list-group">
-            <h2>Các loại sản phẩm</h2>
-            <a href="#" class="list-group-item list-group-item-action text-primary">THỜI TRANG NỮ</a>
-            <a href="#" class="list-group-item list-group-item-action text-primary">THỜI TRANG NAM</a>
-            <a href="#" class="list-group-item list-group-item-action text-primary">NEW COLLECTION - SPRING</a>
-            <a href="#" class="list-group-item list-group-item-action text-primary">NEW COLLECTION - WINTER</a>
-            <a href="#" class="list-group-item list-group-item-action text-primary">NEW COLLECTION - LASTEST FASHION</a>
-        </div>
-    </div>
+    <?php include 'load_to_type.php';?>
+
+    
     <!-- Phần hiển thị sản phẩm (2/3) -->
     <div class="col-lg-9 mb-4">
         <div class="container mt-2">
@@ -91,3 +84,4 @@
         </div>
     </div>
 </div>
+

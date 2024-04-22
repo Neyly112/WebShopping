@@ -1,4 +1,3 @@
-<!-- add_to_favorites.php -->
 <?php
 include('./dbconnect.php');
 

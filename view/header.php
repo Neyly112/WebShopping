@@ -30,10 +30,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gtyt">YÊU THÍCH</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gh">GIỎ HÀNG</a>
+            <a class="nav-link" href="index.php?act=gtyt">GIỎ HÀNG</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=dm">DANH MỤC</a>
