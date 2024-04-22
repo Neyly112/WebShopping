@@ -9,7 +9,7 @@
     <!-- Liên kết CSS Bootstrap bằng CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-<script src="xoa.js"></script>
+<script src="../crud/crud_dsyeuthich/xoa.js"></script>
 <body>
 
     <!-- Main content -->
@@ -18,8 +18,9 @@
 
 
         <?php
-        $imageDirectory = "../../products/"; // Thay đổi đường dẫn tới thư mục chứa hình ảnh của sản phẩm
+        $imageDirectory = "../../products"; // Thay đổi đường dẫn tới thư mục chứa hình ảnh của sản phẩm
         include('./dbconnect.php');
+
 
         // 2. Chuẩn bị câu truy vấn $sql
         $sql = "select SP.TenSanPham,SP.MaSanPham, SP.HinhAnh,SP.GiaBan from `DsYeuThich` DSYT,`SanPham` SP where DSYT.MaSanPham=SP.MaSanPham";
@@ -64,12 +65,19 @@
                         <td><?php echo $row['TenSanPham']; ?></td>
                         <td><?php echo $row['GiaBan']; ?></td>
                         <td><?php echo $row['MaSanPham']; ?></td>
-                        
                             <!-- Button Xóa -->
                         <td>
-                            <button class="btn btn-danger btnDelete"id="delete" data-masanpham="<?php echo $row['MaSanPham']; ?>">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
+                            <!-- Sử dụng đường dẫn xóa trong thẻ <a> -->
+                            <?php 
+                            if(isset($row['MaSanPham'])){
+                                $MaSanPham = "index.php?act=gtyt&MaSanPham=" . $row['MaSanPham'];
+                            ?>
+                                <a href="<?php echo $MaSanPham; ?>" id="btnDelete" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>  
+                            <?php 
+                            }
+                            ?>
                         </td>
 
                         </td>
@@ -78,7 +86,7 @@
             </tbody>
         </table>
     </div>
-
+    
     <!-- Liên kết JS Jquery bằng CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 

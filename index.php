@@ -124,7 +124,14 @@
                 include "./view/TrangChu/TrangChu.php";
                 break;
             case 'gtyt':
+                include_once(__DIR__ . './dbconnect.php');
+                $MaSanPham = isset($_GET['MaSanPham']) ? $_GET['MaSanPham'] : null;
+                if ($MaSanPham !== null) {
+                    $sql = "DELETE FROM `DsYeuThich` WHERE MaSanPham=$MaSanPham;";
+                    $result = mysqli_query($conn, $sql);
+                }
                 include"./crud/crud_dsyeuthich/index.php";
+                mysqli_close($conn);
                 break;
         }
     } else {
