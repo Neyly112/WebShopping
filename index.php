@@ -127,7 +127,7 @@
                 include_once(__DIR__ . './dbconnect.php');
                 $MaSanPham = isset($_GET['MaSanPham']) ? $_GET['MaSanPham'] : null;
                 if ($MaSanPham !== null) {
-                    $sql = "DELETE FROM `DsYeuThich` WHERE MaSanPham=$MaSanPham;";
+                    $sql = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=$MaSanPham;";
                     $result = mysqli_query($conn, $sql);
                 }
                 include"./crud/crud_giohang/index.php";
@@ -139,25 +139,19 @@
                 include"./view/ThongTin/ThongTin.php";
                 break;
 
-            case 'tc':
-                    include_once(__DIR__ . './dbconnect.php');
-                    if (isset($_POST['MaSanPham'])) {
-                        $MaSanPham = $_POST['MaSanPham'];
-                        $sql = "INSERT INTO DsYeuThich (MaSanPham) VALUES ('$MaSanPham')";
-                        if (mysqli_query($conn, $sql)) {
-                            echo "Thêm sản phẩm vào danh sách yêu thích thành công!";
-                        } else {
-                            echo "Lỗi: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-                    } else {
-                        echo "Không có dữ liệu gửi đi!";
+                case 'addcart':
+                    if (isset($_GET['MaSanPham'])) { // Thay vì sử dụng $_POST, bạn cần sử dụng $_GET
+                        $MaSanPham = $_GET['MaSanPham']; // Lấy dữ liệu từ tham số MaSanPham truyền qua URL
+                        $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                        pdo_executer($sql);
+                        $thongbao = "Thêm Thành Công";
                     }
-                    mysqli_close($conn);
+                    include "./view/TrangChu/TrangChu.php";
                     break;
+                }
+            }
                 
-
-        }
-    } else {
+     else {
         include "./view/TrangChu/TrangChu.php";
     }
 

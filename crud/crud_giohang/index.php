@@ -4,7 +4,7 @@ include('./dbconnect.php');
 $imageDirectory = "../../products"; // Thay đổi đường dẫn tới thư mục chứa hình ảnh của sản phẩm
 
 // Chuẩn bị câu truy vấn $sql
-$sql = "SELECT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan FROM `DsYeuThich` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
+$sql = "SELECT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
 
 // Thực thi câu truy vấn SQL để lấy về dữ liệu
 $result = mysqli_query($conn, $sql);
@@ -17,7 +17,9 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         'MaSanPham' => $row['MaSanPham'],
         'HinhAnh' => $row['HinhAnh'],
         'TenSanPham' => $row['TenSanPham'],
-        'GiaBan' => $row['GiaBan']
+        'GiaBan' => $row['GiaBan'],
+        'MoTa'=>$row['MoTa']
+
     );
     $rowNum++;
 }
@@ -52,6 +54,8 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
+                                <p class="card-text">Mã sản phẩm <?php echo $row['MaSanPham']; ?>đ</p>
+                                <p class="card-text">Mô tả <?php echo $row['MoTa']; ?>đ</p>
                                 <p class="card-text">Giá: <?php echo $row['GiaBan']; ?>đ</p>
                             </div>
                             <div class="card-footer">
