@@ -139,7 +139,7 @@
                 include"./view/ThongTin/ThongTin.php";
                 break;
 
-                case 'addcart':
+            case 'addcart':
                     if (isset($_GET['MaSanPham'])) { // Thay vì sử dụng $_POST, bạn cần sử dụng $_GET
                         $MaSanPham = $_GET['MaSanPham']; // Lấy dữ liệu từ tham số MaSanPham truyền qua URL
                         $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
@@ -148,6 +148,12 @@
                     }
                     include "./view/TrangChu/TrangChu.php";
                     break;
+            case 'buy':
+                include "./view/DatHang/Dathang.php";
+                break;
+            case 'buycart':
+                include"./view/DatHang/Dathang_to_cart.php";
+                break;
                 }
             }
                 

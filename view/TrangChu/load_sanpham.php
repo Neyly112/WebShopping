@@ -24,7 +24,10 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<div class="col-md-3 mb-3">';
         echo '<div class="card">';
-        echo '<img src="' . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width:100%">';
+        $imageDirectory = "./products/";
+        echo '<img class="img-fluid" style="width: 500px; height: 280px;" alt="Generic placeholder image" src="' . $imageDirectory . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width: 100%">';
+
+        
         echo '<div class="card-body">';
         echo '<h5 class="card-title">' . $row['TenSanPham'] . '</h5>';
         echo '<p class="card-text">Mã Sản phẩm: ' . $row['MaSanPham'] . '<br>Mô tả: ' . $row['MoTa'] . '</p>';
@@ -41,7 +44,8 @@ if ($result->num_rows > 0) {
         echo '</svg> </a>';
         
         // Mua hàng
-        echo '<a href="#" class="btn btn-success addToCart" data-product-id="' . $row['MaSanPham'] . '">Mua hàng</a>';
+        echo '<a href="index.php?act=buy&MaSanPham=' . $row['MaSanPham'] . '&TenSanPham=' . $row['TenSanPham'] . '&GiaBan=' . $row['GiaBan'] . '&HinhAnh=' . $row['HinhAnh'] . '" class="btn btn-success addToCart" data-product-id="' . $row['MaSanPham'] . '">Mua hàng</a>';
+
         echo '</div>';
         echo '</div>';
         echo '</div>';
