@@ -45,26 +45,35 @@ if (is_array($dm)) {
                                     </div>
                                 </div>
                             </div>
-                            <form action="index.php?act=capnhatSP" method="post">
+                            <form action="index.php?act=capnhatSP" method="post" enctype="multipart/form-data">
                                 <div class="row gy-3 gy-md-4 overflow-hidden">
                                     <div class="col-12">
                                         <label for="email" class="form-label fw-bold">Tên sản phẩm
                                             <span class="text-danger">*</span></label>
                                         <input type="name" class="form-control" name="ten" id="ten" placeholder="" value="<?php if (isset($TenSanPham) && ($TenSanPham != ""))
-                    echo $TenSanPham; ?>"required>
+                                                                                                                                echo $TenSanPham; ?>" required>
                                     </div>
                                     <div class="col-12">
                                         <label for="email" class="form-label fw-bold">Giá bán
                                             <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="gia" id="gia" placeholder="" value="<?php if (isset($GiaBan) && ($GiaBan != ""))
-                    echo $GiaBan; ?>"required>
+                                                                                                                                echo $GiaBan; ?>" required>
                                     </div>
                                     <input class="btn btn-primary" type="hidden" value="<?php if (isset($MaSanPham) && ($MaSanPham != ""))
-                    echo $MaSanPham; ?>" name="MaSanPham">
+                                                                                            echo $MaSanPham; ?>" name="MaSanPham">
+                                    <input class="btn btn-primary" type="hidden" value="<?php if (isset($MaLoai) && ($MaLoai != ""))
+                                                                                            echo $MaLoai; ?>" name="MaLoai">
+                                    <div class="col-12">
+                                        <label for="email" class="form-label fw-bold">Mô tả
+                                            <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="motaa" id="motaa" placeholder="" value="<?php if (isset($MoTa) && ($MoTa != ""))
+                                                                                                                                echo $MoTa; ?>" required>
+                                    </div>
+
                                     <div class="col-12">
                                         <label for="password" class="form-label fw-bold">File hình ảnh
                                             <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" id="file" name="file">
+                                        <input class="form-control" type="file" id="image1" name="image1" >
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid row">
