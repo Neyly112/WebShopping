@@ -43,7 +43,6 @@
                 if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
                     $sql2 = "DELETE FROM `sanpham` WHERE MaSanPham=" . $_GET['MaSanPham'];
                     pdo_executer($sql2);
-                    
                 }
                 // echo("<meta http-equiv='refresh' content='1'>");
                 $sql1 = "SELECT * FROM `sanpham`";
@@ -127,38 +126,50 @@
                 $list = pdo_query($sql1);
                 include "./view/LoaiSanPham/ThemLoaiSP.php";
                 break;
-                case 'gtyt':
-                    include_once(__DIR__ . './dbconnect.php');
-                    $MaSanPham = isset($_GET['MaSanPham']) ? $_GET['MaSanPham'] : null;
-                    if ($MaSanPham !== null) {
-                        $sql = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=$MaSanPham;";
-                        $result = mysqli_query($conn, $sql);
-                    }
-                    include"./crud/crud_giohang/index.php";
-                    mysqli_close($conn);
-                    break;
-                    case 'tc':
-                        include "./view/TrangChu/TrangChu.php";
-                        break;
-                    
-                case 'gttt':
-                    include"./view/ThongTin/ThongTin.php";
-                    break;
-                case 'addcart':
-                        if (isset($_GET['MaSanPham'])) {
-                            $MaSanPham = $_GET['MaSanPham'];
-                            $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
-                            pdo_executer($sql);
-                            $thongbao = "Thêm Thành Công";
-                        }
-                        include "./view/TrangChu/TrangChu.php";
-                        break;
-                case 'buy':
-                    include "./view/DatHang/Dathang.php";
-                    break;
-                case 'buycart':
-                    include"./view/DatHang/Dathang_to_cart.php";
-                    break;
+            case 'gtyt':
+                include('./dbconnect.php');
+                $sql = "SELECT DISTINCT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
+                $result = mysqli_query($conn, $sql);
+
+                $data = [];
+                $rowNum = 1;
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $data[] = array(
+                        'rowNum' => $rowNum,
+                        'MaSanPham' => $row['MaSanPham'],
+                        'HinhAnh' => $row['HinhAnh'],
+                        'TenSanPham' => $row['TenSanPham'],
+                        'GiaBan' => $row['GiaBan'],
+                        'MoTa' => $row['MoTa'],
+
+                    );
+                    $rowNum++;
+                }
+                include "./crud/crud_giohang/index.php";
+                mysqli_close($conn);
+                break;
+            case 'tc':
+                include "./view/TrangChu/TrangChu.php";
+                break;
+
+            case 'gttt':
+                include "./view/ThongTin/ThongTin.php";
+                break;
+            case 'addcart':
+                if (isset($_GET['MaSanPham'])) {
+                    $MaSanPham = $_GET['MaSanPham'];
+                    $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                    pdo_executer($sql);
+                    $thongbao = "Thêm Thành Công";
+                }
+                include "./view/TrangChu/TrangChu.php";
+                break;
+            case 'buy':
+                include "./view/DatHang/Dathang.php";
+                break;
+            case 'buycart':
+                include "./view/DatHang/Dathang_to_cart.php";
+                break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
