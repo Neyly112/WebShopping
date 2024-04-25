@@ -21,10 +21,18 @@
                 if (isset($_POST['ok'])) {
                     $tenSP = $_POST['tenSP'];
                     $giaBan = $_POST['giaBan'];
-                    $hinhAnh = $_POST['filename'];
-                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$hinhAnh', 'ao','$giaBan')";
+                    $image = $_FILES['image']['name'];
+                    $path = "./view/Uploads/";
+                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                    $filename = time() . "." . $image_ext;
+                    $target_file = $path . $filename;
+                    $moTa = $_POST['mota'];
+                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
+                    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
                     pdo_executer($sql);
-                    $thongbao = "Thêm Thành Công";
+                    echo '<script language="javascript">';
+                    echo 'alert("Thêm thành công")';
+                    echo '</script>';
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
@@ -32,26 +40,20 @@
                 include "./view/CapNhatSanPham/CapNhatSP.php";
                 break;
             case 'xoaSp':
-                if (isset($_POST['tenSP'])) {
-                    $tenSP = $_POST['tenSP'];
-                    $giaBan = $_POST['giaBan'];
-                    $hinhAnh = $_POST['filename'];
-                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$hinhAnh', 'ao','$giaBan')";
-                    pdo_executer($sql);
-                    $thongbao = "Thêm Thành Công";
-                }
-                $sql1 = "SELECT * FROM `sanpham`";
-                $list = pdo_query($sql1);
-
-
                 if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
                     $sql2 = "DELETE FROM `sanpham` WHERE MaSanPham=" . $_GET['MaSanPham'];
                     pdo_executer($sql2);
+                    
                 }
-
-
+                // echo("<meta http-equiv='refresh' content='1'>");
+                $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
-                include "./view/CapNhatSanPham/CapNhatSP.php";
+                include "./view/CapNhatSanPham/DanhSachSp.php";
+                break;
+            case 'dssp':
+                $sql1 = "SELECT * FROM `sanpham`";
+                $list = pdo_query($sql1);
+                include './view/CapNhatSanPham/DanhSachSp.php';
                 break;
             case 'suaSp':
                 if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
@@ -65,15 +67,20 @@
                     $TenSP = $_POST['ten'];
                     $giaBan = $_POST['gia'];
                     $MaSanPham = $_POST['MaSanPham'];
-                    $hinhAnh = $_POST['file'];
-                    $sql = "UPDATE `sanpham` SET `MaLoai`='11', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $hinhAnh . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
+                    $MaLoai = $_POST['MaLoai'];
+                    $image = $_FILES['image1']['name'];
+                    $path = "./view/Uploads/";
+                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                    $filename = time() . "." . $image_ext;
+                    $target_file = $path . $filename;
+                    move_uploaded_file($_FILES['image1']['tmp_name'], $target_file);
+                    $sql = "UPDATE `sanpham` SET `MaLoai`='$MaLoai', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $filename . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
                     pdo_executer($sql);
                     $thongbao = "Cập Nhật Thành Công";
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
-
-                include "./view/CapNhatSanPham/CapNhatSP.php";
+                include "./view/CapNhatSanPham/DanhSachSp.php";
                 break;
             case 'dm':
                 if (isset($_POST['ok'])) {
@@ -112,7 +119,7 @@
                 if (isset($_POST['capnhatLoai']) && ($_POST['capnhatLoai'])) {
                     $TenLoai = $_POST['tenloai'];
                     $MaLoai = $_POST['MaLoai'];
-                    $sql = "UPDATE `loai` SET `TenLoai`='" .$TenLoai. "' WHERE MaLoai=" . $MaLoai;
+                    $sql = "UPDATE `loai` SET `TenLoai`='" . $TenLoai . "' WHERE MaLoai=" . $MaLoai;
                     pdo_executer($sql);
                     $thongbao = "Cập Nhật Thành Công";
                 }
@@ -123,41 +130,8 @@
             case 'tc':
                 include "./view/TrangChu/TrangChu.php";
                 break;
-            case 'gtyt':
-                include_once(__DIR__ . './dbconnect.php');
-                $MaSanPham = isset($_GET['MaSanPham']) ? $_GET['MaSanPham'] : null;
-                if ($MaSanPham !== null) {
-                    $sql = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=$MaSanPham;";
-                    $result = mysqli_query($conn, $sql);
-                }
-                include"./crud/crud_giohang/index.php";
-                mysqli_close($conn);
-                break;
-
-                
-            case 'gttt':
-                include"./view/ThongTin/ThongTin.php";
-                break;
-
-            case 'addcart':
-                    if (isset($_GET['MaSanPham'])) { // Thay vì sử dụng $_POST, bạn cần sử dụng $_GET
-                        $MaSanPham = $_GET['MaSanPham']; // Lấy dữ liệu từ tham số MaSanPham truyền qua URL
-                        $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
-                        pdo_executer($sql);
-                        $thongbao = "Thêm Thành Công";
-                    }
-                    include "./view/TrangChu/TrangChu.php";
-                    break;
-            case 'buy':
-                include "./view/DatHang/Dathang.php";
-                break;
-            case 'buycart':
-                include"./view/DatHang/Dathang_to_cart.php";
-                break;
-                }
-            }
-                
-     else {
+        }
+    } else {
         include "./view/TrangChu/TrangChu.php";
     }
 
