@@ -24,20 +24,17 @@
               <li><a class="dropdown-item" href="#">NEW COLLECTION - WINTER</a></li>
             </ul>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gt">GIỚI THIỆU</a>
-          </li>
+         
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=gttt">THÔNG TIN</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gtyt">YÊU THÍCH</a>
+            <a class="nav-link" href="index.php?act=gtyt">GIỎ HÀNG</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php?act=gh">GIỎ HÀNG</a>
+            <a class="nav-link" href="index.php?act=dm">DANH MỤC</a>
           </li>
-          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               TÀI KHOẢN
@@ -49,8 +46,6 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
               <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dm">Quản lý loại sản phẩm</a></li>
-              
             </ul>
           </li>
         </ul>

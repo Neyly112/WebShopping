@@ -127,9 +127,39 @@
                 $list = pdo_query($sql1);
                 include "./view/LoaiSanPham/ThemLoaiSP.php";
                 break;
-            case 'tc':
-                include "./view/TrangChu/TrangChu.php";
-                break;
+                case 'gtyt':
+                    include_once(__DIR__ . './dbconnect.php');
+                    $MaSanPham = isset($_GET['MaSanPham']) ? $_GET['MaSanPham'] : null;
+                    if ($MaSanPham !== null) {
+                        $sql = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=$MaSanPham;";
+                        $result = mysqli_query($conn, $sql);
+                    }
+                    include"./crud/crud_giohang/index.php";
+                    mysqli_close($conn);
+                    break;
+                    case 'tc':
+                        include "./view/TrangChu/TrangChu.php";
+                        break;
+                    
+                case 'gttt':
+                    include"./view/ThongTin/ThongTin.php";
+                    break;
+    
+                case 'addcart':
+                        if (isset($_GET['MaSanPham'])) {
+                            $MaSanPham = $_GET['MaSanPham'];
+                            $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                            pdo_executer($sql);
+                            $thongbao = "Thêm Thành Công";
+                        }
+                        include "./view/TrangChu/TrangChu.php";
+                        break;
+                case 'buy':
+                    include "./view/DatHang/Dathang.php";
+                    break;
+                case 'buycart':
+                    include"./view/DatHang/Dathang_to_cart.php";
+                    break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
