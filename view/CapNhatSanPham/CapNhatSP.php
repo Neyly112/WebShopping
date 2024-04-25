@@ -24,9 +24,7 @@
 ?>
 
 <body>
-  <!--begin navbar-->
-
-  <!--end navbar-->
+  
   <!--Page content-->
   <section class="p-3 p-md-4 p-xl-5">
     <div class="container ">

@@ -71,7 +71,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                             <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
 
                             </div>
-                            <?php $imageDirectory = "./products/"; ?>
+                            <?php $imageDirectory = "./view/Uploads/"; ?>
                             <div class="d-flex align-items-center justify-content-center">
                                 <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
                             </div>

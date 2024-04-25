@@ -144,7 +144,6 @@
                 case 'gttt':
                     include"./view/ThongTin/ThongTin.php";
                     break;
-    
                 case 'addcart':
                         if (isset($_GET['MaSanPham'])) {
                             $MaSanPham = $_GET['MaSanPham'];

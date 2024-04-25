@@ -24,8 +24,8 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo '<div class="col-md-3 mb-3">';
         echo '<div class="card">';
-        $imageDirectory = "./products/";
-        echo '<img class="img-fluid" style="width: 500px; height: 280px;" alt="Generic placeholder image" src="' . $imageDirectory . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width: 100%">';
+        $imageDirectory = "./view/Uploads/";
+        echo '<img class="img-fluid" style="width: 500px; height: 250px;" alt="Generic placeholder image" src="' . $imageDirectory . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width: 100%">';
 
         
         echo '<div class="card-body">';
