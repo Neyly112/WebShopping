@@ -56,4 +56,10 @@ function pdo_query_one($sql)
         throw $e;
     }
 }
+function pdo_fetch_row($stmt) {
+    if ($stmt instanceof PDOStatement) {
+        return $stmt->fetch(PDO::FETCH_NUM);
+    } 
+}
+
 ?>

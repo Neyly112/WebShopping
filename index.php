@@ -148,6 +148,21 @@
                 include "./crud/crud_giohang/index.php";
                 mysqli_close($conn);
                 break;
+            case 'xoagiohang':
+
+                $sql1 = "SELECT * FROM `sanphamgiohang`";
+                $list = pdo_query($sql1);
+
+
+                if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
+                    $sql2 = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=" . $_GET['MaSanPham'];
+                    pdo_executer($sql2);
+                }
+
+
+                $list = pdo_query($sql1);
+                include "./crud/crud_giohang/index.php";
+                break;
             case 'tc':
                 include "./view/TrangChu/TrangChu.php";
                 break;
@@ -155,15 +170,34 @@
             case 'gttt':
                 include "./view/ThongTin/ThongTin.php";
                 break;
-            case 'addcart':
-                if (isset($_GET['MaSanPham'])) {
-                    $MaSanPham = $_GET['MaSanPham'];
-                    $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
-                    pdo_executer($sql);
-                    $thongbao = "Thêm Thành Công";
-                }
-                include "./view/TrangChu/TrangChu.php";
-                break;
+                case 'addcart':
+                    include "./dbconnect.php";
+                    if (isset($_GET['MaSanPham'])) {
+                        $MaSanPham = $_GET['MaSanPham'];
+                
+                        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+                        $sql = "SELECT COUNT(*) AS SL FROM sanphamgiohang WHERE MaSanPham = '$MaSanPham'";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                
+                        if ($row !== null) {
+                            if ($row['SL'] == 0) {
+                                $sql_insert = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                                if (mysqli_query($conn, $sql_insert)) {
+                                    $thongbao = "Thêm Thành Công";
+                                } else {
+                                    $thongbao = "Lỗi khi thêm vào giỏ hàng: " . mysqli_error($conn);
+                                }
+                            } else {
+                                $thongbao = "Sản phẩm đã tồn tại trong giỏ hàng";
+                            }
+                        } else {
+                            $thongbao = "Lỗi truy vấn: " . mysqli_error($conn);
+                        }
+                    }
+                    include "./view/TrangChu/TrangChu.php";
+                    break;
+                
             case 'buy':
                 include "./view/DatHang/Dathang.php";
                 break;

@@ -1,3 +1,4 @@
+
 <?php
 include('./dbconnect.php');
 
@@ -61,12 +62,12 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         margin-top: 50px;
     }
 
-    #check {
-        margin-right: 10px;
-        margin-top: 60px;
-        border: 1px solid pink;
+    .form-check-input {
+margin-right: 10px;
+margin-top: 60px;
+border: 1px solid #4285f4;
 
-    }
+}
 
     #xoa {
         margin-top: 10px;
@@ -82,37 +83,32 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <?php foreach ($data as $row) : ?>
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <div>
-                                    <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
-
+                    <div>
+                        <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <?php $imageDirectory = "./view/Uploads/"; ?>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
+                                    </div>
                                 </div>
-                                <?php $imageDirectory = "./view/Uploads/"; ?>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
-                                </div>
-                            </div>
-                            <div class="col-md-8">
+                                <div class="col-md-8">
 
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
-                                    <p class="card-text">Mã sản phẩm <?php echo $row['MaSanPham']; ?></p>
-                                    <p class="card-text">Mô tả <?php echo $row['MoTa']; ?></p>
-                                    <p class="card-text">Giá: <?php echo $row['GiaBan']; ?>đ</p>
-                                    <div class="def-number-input number-input safari_only">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus" id="quantityMinus<?php echo $rowNum; ?>"></button>
-                                        <input id="quantityInput<?php echo $rowNum; ?>" class="quantity fw-bold text-black" min="0" name="quantity" value="1" type="number">
-                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus" id="quantityPlus<?php echo $rowNum; ?>"></button>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
+                                        <p class="card-text">Mã sản phẩm <?php echo $row['MaSanPham']; ?></p>
+                                        <p class="card-text">Mô tả <?php echo $row['MoTa']; ?></p>
+                                        <p class="card-text"style="color: red;">Giá: <?php echo $row['GiaBan']; ?>đ</p>
+                                      
+                                    </div>
 
-                                    </div>a
-                                </div>
 
-                                <div>
-                                    <a id="xoa" href="index.php?act=gtyt&MaSanPham=<?php echo $row['MaSanPham']; ?>" class="btn btn-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div>
+                                        <a id="xoa" href="index.php?act=gtyt&MaSanPham=<?php echo $row['MaSanPham']; ?>" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

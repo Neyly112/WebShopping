@@ -60,11 +60,10 @@
                                                 <p class="fw-bold mb-0 me-5 pe-3 " style="color: green;"><?php echo $GiaBan; ?>đ</p>
                                                 <?php $soluong = 1 ?>
                                                 <div class="def-number-input number-input safari_only">SL:
-                                                    <input id="quantityInput" class="quantity fw-bold text-black" min="0" name="quantity" value="1" type="text" style="width: 50px;">
+                                                    <input id="soluong" class="quantity fw-bold text-black" min="0" name="soluong" value="1" type="text" style="width: 50px;">
                                                 </div>
 
-                                                <button id="refreshButton" class="btn btn-link"><i class="fas fa-sync-alt"></i></button>
-
+                                             
                                             </div>
                                         </div>
 
@@ -75,36 +74,10 @@
 
 
                                     <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
-
-                                        <h5 class="fw-bold mb-0">Tổng: <span id="totalPriceDisplay">
-                                                <script>
-                                                    document.write(calculateTotalPrice() + "đ")
-                                                </script>đ
-                                            </span></h5>
-
+                                        <h5 class="fw-bold mb-0">Tổng:</h5>
+                                        <h5 class="fw-bold mb-0" id="tongGiaBan"><?php echo $GiaBan; ?></h5>
                                     </div>
-
                                 </div>
-
-                                <script>
-                                    document.getElementById("refreshButton").addEventListener("click", function() {
-                                        location.reload(); // Tải lại trang
-                                    });
-
-                                    // Hàm tính tổng tiền
-                                    function calculateTotalPrice() {
-                                        // Lấy giá và số lượng từ PHP
-                                        var giaBan = <?php echo $GiaBan; ?>;
-                                        var soLuong = parseInt(document.getElementById('quantityInput').value);
-                                        // Tính tổng tiền
-                                        var totalPrice = giaBan * soLuong;
-
-                                        return totalPrice;
-                                    }
-                                </script>
-
-
-
 
                                 <div class="col-lg-6 px-5 py-4">
 
@@ -163,3 +136,21 @@
 </body>
 
 </html>
+<script>
+    // Lấy giá trị của số lượng từ input
+    var soluongInput = document.getElementById('soluong');
+    soluongInput.addEventListener('input', function() {
+        // Lấy giá trị số lượng mới
+        var soluong = parseInt(soluongInput.value);
+
+        // Lấy giá trị của giá bán từ PHP
+        var giaban = <?php echo $GiaBan; ?>;
+
+        // Tính tổng giá bán
+        var tongGiaBan = soluong * giaban;
+
+        // Hiển thị tổng giá bán
+        var tongGiaBanElement = document.getElementById('tongGiaBan');
+        tongGiaBanElement.textContent = tongGiaBan + 'đ';
+    });
+</script>
