@@ -79,19 +79,19 @@
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
                                     <label class="form-label fw-bold" for="tenSP">Họ tên <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="tenSP" id="tenSP" placeholder="Tên sản phẩm" required>
+                                    <input type="text" class="form-control" name="tenSP" id="tenSP"  required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
                                     <label class="form-label fw-bold" for="giaBan">Số điện thoại <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="giaBan" id="giaBan" placeholder="Giá bán" required>
+                                    <input type="text" class="form-control" name="giaBan" id="giaBan"  required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
                                     <label class="form-label fw-bold" for="mota">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="mota" id="mota" placeholder="Mô tả" required>
+                                    <input type="text" class="form-control" name="mota" id="mota"  required>
                                 </div>
                             </div>
                             <div class="col-12">
