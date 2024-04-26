@@ -37,12 +37,12 @@ if ($result->num_rows > 0) {
         echo '<div class="col-md-3 mb-3">';
         echo '<div class="card">';
         $imageDirectory = "./view/Uploads/";
-        echo '<img class="img-fluid" style="width: 500px; height: 250px;" alt="Generic placeholder image" src="' . $imageDirectory . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width: 100%">';
+        echo '<img class="img-fluid" style="width: 440px; height: 250px;" alt="Generic placeholder image" src="' . $imageDirectory . $row['HinhAnh'] . '" alt="' . $row['TenSanPham'] . '" class="card-img-top" style="width: 100%">';
 
         
         echo '<div class="card-body">';
         echo '<h5 class="card-title">' . $row['TenSanPham'] . '</h5>';
-        echo '<p class="card-text">Mã Sản phẩm: ' . $row['MaSanPham'] . '<br>Mô tả: ' . $row['MoTa'] . '</p>';
+        echo '<p class="card-text">Mã: ' . $row['MaSanPham'] . '<br>Mô tả: ' . $row['MoTa'] . '</p>';
         echo '<p class="card-text" style="color: red;">Giá: ' . $row['GiaBan'] . 'đ</p>';
         echo '</div>';
         echo '<div class="card-footer">';
