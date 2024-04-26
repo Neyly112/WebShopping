@@ -127,27 +127,29 @@
                 include "./view/LoaiSanPham/ThemLoaiSP.php";
                 break;
             case 'gtyt':
-                include('./dbconnect.php');
-                $sql = "SELECT DISTINCT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
-                $result = mysqli_query($conn, $sql);
+                // include('./dbconnect.php');
+                // $sql = "SELECT DISTINCT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
+                // $result = mysqli_query($conn, $sql);
 
-                $data = [];
-                $rowNum = 1;
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $data[] = array(
-                        'rowNum' => $rowNum,
-                        'MaSanPham' => $row['MaSanPham'],
-                        'HinhAnh' => $row['HinhAnh'],
-                        'TenSanPham' => $row['TenSanPham'],
-                        'GiaBan' => $row['GiaBan'],
-                        'MoTa' => $row['MoTa'],
+                // $data = [];
+                // $rowNum = 1;
+                // while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                //     $data[] = array(
+                //         'rowNum' => $rowNum,
+                //         'MaSanPham' => $row['MaSanPham'],
+                //         'HinhAnh' => $row['HinhAnh'],
+                //         'TenSanPham' => $row['TenSanPham'],
+                //         'GiaBan' => $row['GiaBan'],
+                //         'MoTa' => $row['MoTa'],
 
-                    );
-                    $rowNum++;
-                }
+                //     );
+                //     $rowNum++;
+                // }
                 include "./crud/crud_giohang/index.php";
-                mysqli_close($conn);
+                //mysqli_close($conn);
                 break;
+
+                
             case 'xoagiohang':
 
                 $sql1 = "SELECT * FROM `sanphamgiohang`";
@@ -170,34 +172,34 @@
             case 'gttt':
                 include "./view/ThongTin/ThongTin.php";
                 break;
-                case 'addcart':
-                    include "./dbconnect.php";
-                    if (isset($_GET['MaSanPham'])) {
-                        $MaSanPham = $_GET['MaSanPham'];
-                
-                        // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-                        $sql = "SELECT COUNT(*) AS SL FROM sanphamgiohang WHERE MaSanPham = '$MaSanPham'";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_fetch_assoc($result);
-                
-                        if ($row !== null) {
-                            if ($row['SL'] == 0) {
-                                $sql_insert = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
-                                if (mysqli_query($conn, $sql_insert)) {
-                                    $thongbao = "Thêm Thành Công";
-                                } else {
-                                    $thongbao = "Lỗi khi thêm vào giỏ hàng: " . mysqli_error($conn);
-                                }
+            case 'addcart':
+                include "./dbconnect.php";
+                if (isset($_GET['MaSanPham'])) {
+                    $MaSanPham = $_GET['MaSanPham'];
+
+                    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+                    $sql = "SELECT COUNT(*) AS SL FROM sanphamgiohang WHERE MaSanPham = '$MaSanPham'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+
+                    if ($row !== null) {
+                        if ($row['SL'] == 0) {
+                            $sql_insert = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                            if (mysqli_query($conn, $sql_insert)) {
+                                $thongbao = "Thêm Thành Công";
                             } else {
-                                $thongbao = "Sản phẩm đã tồn tại trong giỏ hàng";
+                                $thongbao = "Lỗi khi thêm vào giỏ hàng: " . mysqli_error($conn);
                             }
                         } else {
-                            $thongbao = "Lỗi truy vấn: " . mysqli_error($conn);
+                            $thongbao = "Sản phẩm đã tồn tại trong giỏ hàng";
                         }
+                    } else {
+                        $thongbao = "Lỗi truy vấn: " . mysqli_error($conn);
                     }
-                    include "./view/TrangChu/TrangChu.php";
-                    break;
-                
+                }
+                include "./view/TrangChu/TrangChu.php";
+                break;
+
             case 'buy':
                 include "./view/DatHang/Dathang.php";
                 break;

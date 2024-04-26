@@ -12,21 +12,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </head>
 <style>
+    #dathang{
+        margin-left: 20px;
+    }
 </style>
 
 <body>
-    <!--Page content-->
-    <section class="h-100 h-custom">
-        <div class="container h-100 py-5">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col">
-                    <div class="card shopping-cart" style="border-radius: 15px;">
-                        <div class="card-body text-black">
-
-                            <div class="row">
-                                <div class="col-lg-6 px-5 py-4">
-
-                                    <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Sản
+    <div class="container">
+        <h1 style="text-align: center;">ĐẶT HÀNG<i class="fas fa-shopping-cart"></i></h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+            <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Sản
                                         phẩm</h3>
 
 
@@ -62,94 +58,79 @@
                                                 <div class="def-number-input number-input safari_only">SL:
                                                     <input id="soluong" class="quantity fw-bold text-black" min="0" name="soluong" value="1" type="text" style="width: 50px;">
                                                 </div>
-
-                                             
                                             </div>
                                         </div>
 
                                     </div>
-
-
-                                    <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
-
-
                                     <div class="d-flex justify-content-between p-2 mb-2" style="background-color: #e1f5fe;">
                                         <h5 class="fw-bold mb-0">Tổng:</h5>
                                         <h5 class="fw-bold mb-0" id="tongGiaBan"><?php echo $GiaBan; ?></h5>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 px-5 py-4">
-
-                                    <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">THÔNG
-                                        TIN NGƯỜI NHẬN</h3>
-
-                                    <form class="mb-5">
-
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label fw-bold" for="typeText">Họ
-                                                Tên</label>
-                                            <input type="text" id="typeText" class="form-control form-control-lg" siez="17" value minlength="19" maxlength="19" name="name" />
-
-                                        </div>
-
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label fw-bold" for="typeName">Số
-                                                điện thoại</label>
-                                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value name="phone" />
-
-                                        </div>
-
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label fw-bold" for="typeName">Email</label>
-                                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value name="phone" />
-
-                                        </div>
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label fw-bold" for="typeName">Địa
-                                                Chỉ</label>
-                                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value name="phone" />
-
-                                        </div>
-                                        <div class="form-outline mb-3">
-                                            <label class="form-label fw-bold" for="typeName">Phương
-                                                Thức Thanh
-                                                Toán</label>
-                                            <input type="text" id="typeName" class="form-control form-control-lg" siez="17" value="Thanh Toán Khi Nhận Hàng" name="phone" disabled />
-
-                                        </div>
-
-                                        <button type="button" class="btn btn-primary btn-block btn-lg">Mua</button>
-
-
-                                    </form>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+
+            <div class="col-lg-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">THÔNG TIN NGƯỜI NHẬN</h3>
+                    </div>
+
+                    <form class="mb-5" action="" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" style="padding: 10px;">
+                                    <label class="form-label fw-bold" for="tenSP">Họ tên <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="tenSP" id="tenSP" placeholder="Tên sản phẩm" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group" style="padding: 10px;">
+                                    <label class="form-label fw-bold" for="giaBan">Số điện thoại <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="giaBan" id="giaBan" placeholder="Giá bán" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group" style="padding: 10px;">
+                                    <label class="form-label fw-bold" for="mota">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="mota" id="mota" placeholder="Mô tả" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline mb-3" style="padding: 10px;">
+                                    <label class="form-label fw-bold" for="typeName">Phương Thức Thanh Toán</label>
+                                    <span class="text-danger">*</span>
+                                    <input type="text" id="typeName" class="form-control form-control-lg" size="17" value="Thanh Toán Khi Nhận Hàng" name="phone" disabled>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input class="btn btn-primary btn-block btn-lg mt-3" type="submit" value="Đặt hàng" name="dathang" id="dathang">
+
+                            </div>
+
+
+                    </form>
+
+                </div>
+            </div>
 </body>
 
+
 </html>
+
+<!-- JavaScript -->
+
 <script>
-    // Lấy giá trị của số lượng từ input
     var soluongInput = document.getElementById('soluong');
     soluongInput.addEventListener('input', function() {
-        // Lấy giá trị số lượng mới
+
         var soluong = parseInt(soluongInput.value);
 
-        // Lấy giá trị của giá bán từ PHP
+
         var giaban = <?php echo $GiaBan; ?>;
 
-        // Tính tổng giá bán
+
         var tongGiaBan = soluong * giaban;
 
-        // Hiển thị tổng giá bán
+
         var tongGiaBanElement = document.getElementById('tongGiaBan');
         tongGiaBanElement.textContent = tongGiaBan + 'đ';
     });

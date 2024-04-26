@@ -11,19 +11,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php?act=tc">TRANG CHỦ</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              SẢN PHẨM
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Thời trang nữ</a></li>
-              <li><a class="dropdown-item" href="#">Thời trang nam</a></li>
-              <li><a class="dropdown-item" href="#">Thời trang trẻ em</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">NEW COLLECTION - SPRING</a></li>
-              <li><a class="dropdown-item" href="#">NEW COLLECTION - WINTER</a></li>
-            </ul>
-          </li> -->
+          
          
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=gttt">THÔNG TIN</a>

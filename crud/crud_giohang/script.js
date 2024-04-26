@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
 
-            alert('Vui lòng chọn ít nhất một sản phẩm để mua.');
+            window.alert('Vui lòng chọn ít nhất một sản phẩm để mua.');
+
         }
     });
 });

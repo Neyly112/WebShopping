@@ -1,10 +1,5 @@
 
-.py-3 {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f8f9fa;
-    /* Customize the background color */
-    padding: 20px;
-    /* Add padding for spacing */
+form{
+    border: none;
+    padding:10px;
 }
