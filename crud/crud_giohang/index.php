@@ -32,7 +32,133 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gio hàng</title>
 
+<<<<<<< Updated upstream
     <link rel="stylesheet" type="text/css" href="./crud/crud_giohang/style.css" />
+=======
+    <!-- Liên kết CSS Bootstrap bằng CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 0; 
+        box-shadow: none; 
+        margin: 100px; 
+    }
+    h1 {
+    margin-top: 50px;
+}
+#check {
+    margin-right: 10px;
+    margin-top: 60px;
+    border: 1px solid pink;
+   
+}
+</style>
+<body>
+<div class="container">
+    <h1 style="text-align: center;">
+        GIỎ HÀNG
+        <i class="fas fa-shopping-cart"></i>
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <?php foreach ($data as $row) : ?>
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <div>
+                            <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
+
+                            </div>
+                            <?php $imageDirectory = "./products/"; ?>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
+                                <p class="card-text">Mã sản phẩm <?php echo $row['MaSanPham']; ?></p>
+                                <p class="card-text">Mô tả <?php echo $row['MoTa']; ?></p>
+                                <p class="card-text">Giá: <?php echo $row['GiaBan']; ?>đ</p>
+                            </div>
+                            <div
+                                                    class="def-number-input number-input safari_only">
+                                                    <button
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                        class="minus"></button>
+                                                    <input
+                                                        class="quantity fw-bold text-black"
+                                                        min="0"
+                                                        name="quantity"
+                                                        value="1"
+                                                        type="number">
+                                                    <button
+                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                        class="plus"></button>
+                                                </div>
+                            <div>
+                                <a href="index.php?act=gtyt&MaSanPham=<?php echo $row['MaSanPham']; ?>" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i> 
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            
+        </div>
+       
+    </div>
+    <div class="float-right">
+        <button  id="buyBtn" class="btn btn-success" style="font-size: 18px;">Mua hàng</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   
+    document.getElementById('buyBtn').addEventListener('click', function() {
+  
+        var checkboxes = document.querySelectorAll('input[name="check"]');
+        
+  
+        var selectedProductIds = [];
+       
+        checkboxes.forEach(function(checkbox) {
+            
+            if (checkbox.checked) {
+          
+                selectedProductIds.push(checkbox.value);
+            }
+        });
+
+        if (selectedProductIds.length > 0) {
+            // Sử dụng AJAX để gửi dữ liệu lên máy chủ
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './view/DatHang/Dathang_to_cart.php?act=buycart&selectedProductIds=' + selectedProductIds.join(','), true);
+            window.location.href = 'index.php?act=buycart&selectedProductIds=' + selectedProductIds.join(',');
+         
+            xhr.send();
+          
+        } else {
+           
+            alert('Vui lòng chọn ít nhất một sản phẩm để mua.');
+        }
+    });
+});
+</script>
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
     <!-- Liên kết JS Jquery bằng CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
