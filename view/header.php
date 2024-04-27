@@ -20,9 +20,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php?act=gtyt">GIỎ HÀNG</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?act=dm">DANH MỤC</a>
-          </li>
+          
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               TÀI KHOẢN
@@ -34,12 +32,14 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
               <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dm">Danh mục</a></li>
+
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" action="index.php?act=search" method="POST">
+          <input class="form-control me-2" type="search" placeholder="Search" name="nameSearch">
+          <input class="btn bsb-btn-ml btn-success" type="submit" id="search" name="search" value="Tìm kiếm">
         </form>
       </div>
     </div>
