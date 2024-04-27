@@ -97,9 +97,9 @@ border: 1px solid #4285f4;
 
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
-                                        <p class="card-text">Mã sản phẩm <?php echo $row['MaSanPham']; ?></p>
-                                        <p class="card-text">Mô tả <?php echo $row['MoTa']; ?></p>
-                                        <p class="card-text"style="color: red;">Giá: <?php echo $row['GiaBan']; ?>đ</p>
+                                        <p class="card-text">Mã <?php echo $row['MaSanPham']; ?></p>
+                                      
+                                        <p class="card-text"style="color: red;"><strong><?php echo $row['GiaBan']; ?> đ</strong></p>
                                       
                                     </div>
 

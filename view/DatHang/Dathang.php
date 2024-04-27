@@ -53,7 +53,7 @@
 
                                             <div class="d-flex align-items-center">
                                                 <p class="fw-bold mb-0 me-5 pe-3">Mã<?php echo $MaSanPham; ?></p>
-                                                <p class="fw-bold mb-0 me-5 pe-3 " style="color: green;"><?php echo $GiaBan; ?>đ</p>
+                                                <p class="fw-bold mb-0 me-5 pe-3 " style="color: green;"><strong><?php echo $GiaBan; ?> đ</strong></p>
                                                 <?php $soluong = 1 ?>
                                                 <div class="def-number-input number-input safari_only">SL:
                                                     <input id="soluong" class="quantity fw-bold text-black" min="0" name="soluong" value="1" type="text" style="width: 50px;">

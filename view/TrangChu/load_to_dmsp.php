@@ -41,8 +41,8 @@ if ($result->num_rows > 0) {
         
         echo '<div class="card-body">';
         echo '<h5 class="card-title">' . $row['TenSanPham'] . '</h5>';
-        echo '<p class="card-text">Mã Sản phẩm: ' . $row['MaSanPham'] . '<br>Mô tả: ' . $row['MoTa'] . '</p>';
-        echo '<p class="card-text" style="color: red;">Giá: ' . $row['GiaBan'] . 'đ</p>';
+        echo '<p class="card-text">Mã ' . $row['MaSanPham'] . '<br>Mô tả: ';
+        echo '<p class="card-text" style="color: red;"><strong>' . $row['GiaBan'] . 'đ</strong></p>';
         echo '</div>';
         echo '<div class="card-footer">';
         echo '<div class="d-flex justify-content-between">';
