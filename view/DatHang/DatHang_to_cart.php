@@ -4,6 +4,7 @@ $selectedProducts = [];
 
 if (isset($_GET['selectedProductIds'])) {
     $selectedProductIds = explode(',', $_GET['selectedProductIds']);
+    $MangMaSP=[];
 
     $sql = "SELECT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan, SP.MoTa FROM SanPham SP WHERE SP.MaSanPham IN ('" . implode("','", $selectedProductIds) . "')";
 
@@ -11,6 +12,7 @@ if (isset($_GET['selectedProductIds'])) {
 
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $selectedProducts[] = $row;
+        $MangMaSP=$row['MaSanPham'];
     }
 }
 ?>
@@ -71,7 +73,7 @@ if (isset($_GET['selectedProductIds'])) {
                         <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">THÔNG TIN NGƯỜI NHẬN</h3>
                     </div>
 
-                    <form class="mb-5" action="" method="post" enctype="multipart/form-data">
+                    <form class="mb-5"  id="datdonhangForm" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
@@ -99,7 +101,7 @@ if (isset($_GET['selectedProductIds'])) {
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input class="btn btn-primary btn-block btn-lg mt-3" type="submit" value="Đặt hàng" name="dathang" id="dathang">
+                                <input id="dathangButton"  class="btn btn-primary btn-block btn-lg mt-3" type="submit" value="Đặt hàng" name="dathang" id="dathang">
 
                             </div>
 
@@ -111,7 +113,39 @@ if (isset($_GET['selectedProductIds'])) {
 </body>
 
 </html>
-<!-- JavaScript -->
+<script>
+    document.getElementById('dathangButton').addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        var tongGiaBan = 0;
+        var soluongInputs = document.querySelectorAll('.quantity');
+        var giaBans = <?php echo json_encode(array_column($selectedProducts, 'GiaBan')); ?>;
+        soluongInputs.forEach(function(input, index) {
+            input.addEventListener('input', function() {
+                var soluong = parseInt(input.value);
+                tongGiaBan = 0;
+
+                soluongInputs.forEach(function(input, i) {
+                    var soluong = parseInt(input.value);
+                    tongGiaBan += soluong * giaBans[i];
+                });
+
+                var tongGiaBanElement = document.getElementById('tongGiaBan');
+                tongGiaBanElement.textContent = tongGiaBan + 'đ';
+            });
+        });
+
+        var hoten = document.getElementById('hoten').value; 
+        var diachi = document.getElementById('diachi').value; 
+        var sdt = document.getElementById('sdt').value;
+
+        // Kiểm tra xem các trường đã được điền đầy đủ hay không
+        if (hoten !== '' && diachi !== '' && sdt !== '') {
+            var newURL = 'index.php?act=datnhieusanpham&MaSanPham=' + <?php echo json_encode($MangMaSP); ?> + '&tonggiaban=' + tongGiaBan + '&hoten=' + hoten + '&sdt=' + sdt + '&diachi=' + diachi;
+            window.location.href = newURL;
+        } 
+    });
+</script>
 
 <script>
     var tongGiaBan = 0;

@@ -101,23 +101,21 @@
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
                     $sql2 = "DELETE FROM `loai` WHERE MaLoai=" . $_GET['MaLoai'];
                     try {
-                    if (!pdo_executer($sql2)) {
-                        echo '<script language="javascript">';
-                        echo 'alert("Xóa thành công")';
-                        echo '</script>';
+                        if (!pdo_executer($sql2)) {
+                            echo '<script language="javascript">';
+                            echo 'alert("Xóa thành công")';
+                            echo '</script>';
+                        } else {
+                            echo '<script language="javascript">';
+                            echo 'alert("Lỗi")';
+                            echo '</script>';
+                        }
+                    } catch (Exception $e) {
+                        echo  '<script language="javascript">';
+                        echo 'alert("Lỗi. Loại đang được gắn với sản phẩm")';
+                        echo '</script>';;
                     }
-                    else {
-                        echo '<script language="javascript">';
-                        echo 'alert("Lỗi")';
-                        echo '</script>';
-                        
-                    }
-                } catch (Exception $e) {
-                    echo  '<script language="javascript">';
-                    echo 'alert("Lỗi. Loại đang được gắn với sản phẩm")';
-                    echo '</script>';;
                 }
-            }
 
                 $list = pdo_query($sql1);
                 include "./view/LoaiSanPham/DanhSachLoaiSp.php";
@@ -175,6 +173,34 @@
             case 'gttt':
                 include "./view/ThongTin/ThongTin.php";
                 break;
+            case 'xoagiohang':
+
+                $sql1 = "SELECT * FROM `sanphamgiohang`";
+                $list = pdo_query($sql1);
+
+
+                if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
+                    $sql2 = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=" . $_GET['MaSanPham'];
+                    try {
+                        if (!pdo_executer($sql2)) {
+                            echo '<script language="javascript">';
+                            //echo 'alert("Xóa thành công")';
+                            echo '</script>';
+                        } else {
+                            echo '<script language="javascript">';
+                            echo 'alert("Lỗi")';
+                            echo '</script>';
+                        }
+                    } catch (Exception $e) {
+                        echo  '<script language="javascript">';
+                        echo 'alert("Lỗi. Loại đang được gắn với sản phẩm")';
+                        echo '</script>';;
+                    }
+                }
+
+                $list = pdo_query($sql1);
+                include "./crud/crud_giohang/index.php";
+                break;
             case 'addcart':
                 if (isset($_GET['MaSanPham'])) {
                     $MaSanPham = $_GET['MaSanPham'];
@@ -193,9 +219,9 @@
             case 'listSp':
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
                     $maLoai = $_GET['MaLoai'];
-                    $sql = "SELECT `TenLoai` FROM `loai` WHERE MaLoai =" .$_GET['MaLoai'];
+                    $sql = "SELECT `TenLoai` FROM `loai` WHERE MaLoai =" . $_GET['MaLoai'];
                     $query = pdo_query_one($sql);
-                    $tenLoai = $query['TenLoai'];  
+                    $tenLoai = $query['TenLoai'];
                 }
                 include './view/TrangChu/SpTheoDanhMuc.php';
                 break;
@@ -207,13 +233,44 @@
                 }
                 include './view/Search/Search.php';
                 break;
-            // case 'search':
-            //     if (isset($_REQUEST['search'])) {
-            //         $search = $_REQUEST['search'];
-            //         echo $search;
-            //     }
-            //     include './view/Search/HienThiSp.php';
-            //     break;
+                // case 'search':
+                //     if (isset($_REQUEST['search'])) {
+                //         $search = $_REQUEST['search'];
+                //         echo $search;
+                //     }
+                //     include './view/Search/HienThiSp.php';
+                //     break;
+            case 'datdonhang':
+                if (isset($_GET['MaSanPham'])) {
+                    $MaDonHang = rand(1000, 9999); // Tạo số ngẫu nhiên từ 1000 đến 9999
+                    $MaSanPham = $_GET['MaSanPham'];
+                    $tongGiaBan = $_GET['tonggiaban'];
+                    $soluong = $_GET['soluong'];
+                    $hoten = $_GET['hoten'];
+                    $sdt = $_GET['sdt'];
+                    $diachi = $_GET['diachi'];
+
+                  
+                    $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$sdt', '$diachi')";
+                    pdo_executer($sql);
+                    $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
+                    pdo_executer($sql2);
+                    $thongbao = "Đặt hàng thành công";
+                    header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
+                    exit();
+                } else {
+                    $thongbao = "lỗi";
+                }
+                include "./view/TrangChu/TrangChu.php";
+                break;
+
+            case 'datnhieusanpham':
+                
+
+                break;
+                case 'dangnhap':
+                    include "./view/DangNhap/DangNhap.php";
+                    break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";

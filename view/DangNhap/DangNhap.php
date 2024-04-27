@@ -23,7 +23,7 @@
                                 <img
                                     class="img-fluid rounded-start w-100 h-100 object-fit-cover"
                                     loading="lazy"
-                                    src="./Gray Minimalist Clothing Store Logo (1).png" 
+                                    src="../Gray Minimalist Clothing Store Logo (1).png" 
                   alt="BootstrapBrain Logo" height="500" width="500">
                             </div>
                             <div class="col-12 col-md-6">
@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <form action="#!">
+                                    <form action="./view/DangNhap/CheckLogin.php" method="post">
                                         <div
                                             class="row gy-3 gy-md-4 overflow-hidden">
                                             <div class="col-12">
@@ -46,7 +46,7 @@
                                                 <input type="email"
                                                     class="form-control"
                                                     name="email" id="email"
-                                                    placeholder="ten@gamil.com"
+                                                    placeholder="ten@gmail.com"
                                                     required>
                                             </div>
                                             <div class="col-12">
