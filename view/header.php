@@ -32,7 +32,7 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
               <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dm">Danh mục</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dm">Quản lý danh mục</a></li>
 
             </ul>
           </li>
