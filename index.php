@@ -12,7 +12,7 @@
 <div>
     <?php
 
-    $maLoai = 11;
+    $maLoai = 17;
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
 
@@ -100,12 +100,32 @@
 
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
                     $sql2 = "DELETE FROM `loai` WHERE MaLoai=" . $_GET['MaLoai'];
-                    pdo_executer($sql2);
+                    try {
+                    if (!pdo_executer($sql2)) {
+                        echo '<script language="javascript">';
+                        echo 'alert("Xóa thành công")';
+                        echo '</script>';
+                    }
+                    else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Lỗi")';
+                        echo '</script>';
+                        
+                    }
+                } catch (Exception $e) {
+                    echo  '<script language="javascript">';
+                    echo 'alert("Lỗi. Loại đang được gắn với sản phẩm")';
+                    echo '</script>';;
                 }
-
+            }
 
                 $list = pdo_query($sql1);
-                include "./view/LoaiSanPham/ThemLoaiSP.php";
+                include "./view/LoaiSanPham/DanhSachLoaiSp.php";
+                break;
+            case "dslsp":
+                $sql1 = "SELECT * FROM `loai`";
+                $list = pdo_query($sql1);
+                include "./view/LoaiSanPham/DanhSachLoaiSp.php";
                 break;
             case 'suaLoai':
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
@@ -127,43 +147,26 @@
                 include "./view/LoaiSanPham/ThemLoaiSP.php";
                 break;
             case 'gtyt':
-                // include('./dbconnect.php');
-                // $sql = "SELECT DISTINCT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
-                // $result = mysqli_query($conn, $sql);
+                include('./dbconnect.php');
+                $sql = "SELECT DISTINCT SP.TenSanPham, SP.MaSanPham, SP.HinhAnh, SP.GiaBan,SP.MoTa FROM `sanphamgiohang` DSYT, `SanPham` SP WHERE DSYT.MaSanPham=SP.MaSanPham";
+                $result = mysqli_query($conn, $sql);
 
-                // $data = [];
-                // $rowNum = 1;
-                // while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                //     $data[] = array(
-                //         'rowNum' => $rowNum,
-                //         'MaSanPham' => $row['MaSanPham'],
-                //         'HinhAnh' => $row['HinhAnh'],
-                //         'TenSanPham' => $row['TenSanPham'],
-                //         'GiaBan' => $row['GiaBan'],
-                //         'MoTa' => $row['MoTa'],
+                $data = [];
+                $rowNum = 1;
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $data[] = array(
+                        'rowNum' => $rowNum,
+                        'MaSanPham' => $row['MaSanPham'],
+                        'HinhAnh' => $row['HinhAnh'],
+                        'TenSanPham' => $row['TenSanPham'],
+                        'GiaBan' => $row['GiaBan'],
+                        'MoTa' => $row['MoTa'],
 
-                //     );
-                //     $rowNum++;
-                // }
-                include "./crud/crud_giohang/index.php";
-                //mysqli_close($conn);
-                break;
-
-                
-            case 'xoagiohang':
-
-                $sql1 = "SELECT * FROM `sanphamgiohang`";
-                $list = pdo_query($sql1);
-
-
-                if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
-                    $sql2 = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=" . $_GET['MaSanPham'];
-                    pdo_executer($sql2);
+                    );
+                    $rowNum++;
                 }
-
-
-                $list = pdo_query($sql1);
                 include "./crud/crud_giohang/index.php";
+                mysqli_close($conn);
                 break;
             case 'tc':
                 include "./view/TrangChu/TrangChu.php";
@@ -173,42 +176,30 @@
                 include "./view/ThongTin/ThongTin.php";
                 break;
             case 'addcart':
-                include "./dbconnect.php";
                 if (isset($_GET['MaSanPham'])) {
                     $MaSanPham = $_GET['MaSanPham'];
-
-                    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-                    $sql = "SELECT COUNT(*) AS SL FROM sanphamgiohang WHERE MaSanPham = '$MaSanPham'";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_assoc($result);
-
-                    if ($row !== null) {
-                        if ($row['SL'] == 0) {
-                            $sql_insert = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
-                            if (mysqli_query($conn, $sql_insert)) {
-                                $thongbao = "Thêm Thành Công";
-                            } else {
-                                $thongbao = "Lỗi khi thêm vào giỏ hàng: " . mysqli_error($conn);
-                            }
-                        } else {
-                            $thongbao = "Sản phẩm đã tồn tại trong giỏ hàng";
-                        }
-                    } else {
-                        $thongbao = "Lỗi truy vấn: " . mysqli_error($conn);
-                    }
+                    $sql = "INSERT INTO sanphamgiohang (MaSanPham) VALUES ('$MaSanPham')";
+                    pdo_executer($sql);
+                    $thongbao = "Thêm Thành Công";
                 }
                 include "./view/TrangChu/TrangChu.php";
                 break;
-
             case 'buy':
                 include "./view/DatHang/Dathang.php";
                 break;
             case 'buycart':
                 include "./view/DatHang/Dathang_to_cart.php";
                 break;
+            case 'listSp':
+                if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
+                    $maLoai = $_GET['MaLoai'];
+                    $sql = "SELECT `TenLoai` FROM `loai` WHERE MaLoai =" .$_GET['MaLoai'];
+                    $query = pdo_query_one($sql);
+                    $tenLoai = $query['TenLoai'];
+                    
+                }
+                include './view/TrangChu/SpTheoDanhMuc.php';
         }
-    } else {
-        include "./view/TrangChu/TrangChu.php";
     }
 
 
