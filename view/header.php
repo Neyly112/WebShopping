@@ -37,9 +37,9 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <form class="d-flex" action="index.php?act=search" method="POST">
+          <input class="form-control me-2" type="search" placeholder="Search" name="nameSearch">
+          <input class="btn bsb-btn-ml btn-success" type="submit" id="search" name="search" value="Tìm kiếm">
         </form>
       </div>
     </div>
