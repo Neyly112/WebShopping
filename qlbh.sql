@@ -10,10 +10,6 @@ CREATE TABLE `loai` (
   `TenLoai` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE 'user'(
-  'username' varchar(255) NOT NULL,
-  'password' varchar(255) NOT NULL
-)
 
 INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
 (1, 'THỜI TRANG NỮ'),
