@@ -55,7 +55,7 @@ CREATE TABLE `sanphamgiohang` (
 CREATE TABLE `CTDH` (
     `madonhang` int(11) ,
     `masanpham` int(11) ,
-    `soluong` int(11) ,
+    `soluong` int(11) 
    
 );
 
@@ -66,7 +66,7 @@ CREATE TABLE `user`(
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 );
-INSERT INTO `user`(`email`,`password`) VALUES('nhung@gmail.com','123')
+INSERT INTO `user`(`email`,`password`) VALUES('nhung@gmail.com','123');
 
 ALTER TABLE `loai`
   ADD PRIMARY KEY (`MaLoai`);
