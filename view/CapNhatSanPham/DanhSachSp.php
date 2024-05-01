@@ -23,6 +23,7 @@
                             <th>Mã Sản Phẩm</th>
                             <th>Tên Sản Phẩm</th>
                             <th>Giá Bán</th>
+                            <th>Loại</th>
                             <th>Hình Ảnh</th>
                             <th>Mô tả</th>
                           </tr>
@@ -32,13 +33,17 @@
                         
                           <?php
                           foreach ($list as $item) {
-                            
+                            $maLoai = $item["MaLoai"];
+                            $sql = "SELECT TenLoai FROM `loai` WHERE MaLoai = $maLoai";
+                            $result = pdo_query_one($sql);
+                            $tenLoai = $result['TenLoai'];
                           ?>
-
+                            
                             <tr>
                               <td><?= $item["MaSanPham"]; ?></td>
                               <td><?= $item["TenSanPham"]; ?></td>
                               <td><?= $item["GiaBan"]; ?></td>
+                              <td><?= $tenLoai; ?></td>
                               <td> <img src="./view/uploads/<?= $item["HinhAnh"]; ?>" width="100px" height="100px"></td>
                               <td><?= $item["MoTa"]; ?></td>
                               <td><a href="<?= "index.php?act=suaSp&MaSanPham= " . $item["MaSanPham"]; ?>"><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a>

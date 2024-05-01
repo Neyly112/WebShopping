@@ -26,17 +26,15 @@
               TÀI KHOẢN
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="index.php?act=gt">Đơn hàng của tôi</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dh">Đổi mật khẩu</a></li>
+              <li><a class="dropdown-item" href="index.php?act=gt">Thông tin cá nhân</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dh">Đơn hàng của tôi</a></li>
               <li><a class="dropdown-item" href="index.php?act=dx">Đăng xuất</a></li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
               <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
-              <li><a class="dropdown-item" href="index.php?act=dm">Quản lý danh mục</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dm">Danh mục</a></li>
 
             </ul>
-          </li>
-          <li class="nav-item">
-          <a class="nav-link" href="index.php?act=dangnhap">ĐĂNG NHẬP</a>
           </li>
         </ul>
         <form class="d-flex" action="index.php?act=search" method="POST">

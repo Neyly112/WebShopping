@@ -20,10 +20,9 @@ INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
 
 
 CREATE TABLE `donhang` (
-  `MaDonHang` int(11) PRIMARY KEY ,
+  `MaDonHang` int(11) PRIMARY KEY AUTO_INCREMENT,
   `NgayTao` date DEFAULT CURRENT_TIMESTAMP,
   `PhuongThucThanhToan` varchar(255) DEFAULT 'Thanh toán khi nhận hàng',
-  `tongtien` int,
   `HoTen` varchar(255) DEFAULT NULL,
   `SoDienThoai` varchar(255) DEFAULT NULL,
   `DiaChiGiaoHang` varchar(255) DEFAULT NULL,
@@ -52,21 +51,11 @@ CREATE TABLE `sanphamgiohang` (
   `SoLuongMua` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE `CTDH` (
-    `madonhang` int(11) ,
-    `masanpham` int(11) ,
-    `soluong` int(11) 
-   
-);
+
 
 INSERT INTO `sanphamgiohang` (`MaSanPham`, `SoLuongMua`) VALUES
 (17, 1);
 
-CREATE TABLE `user`(
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-);
-INSERT INTO `user`(`email`,`password`) VALUES('nhung@gmail.com','123');
 
 ALTER TABLE `loai`
   ADD PRIMARY KEY (`MaLoai`);
@@ -85,11 +74,8 @@ ALTER TABLE `sanpham`
 ALTER TABLE `sanpham`
   ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`MaLoai`) REFERENCES `loai` (`MaLoai`);
 
-ALTER TABLE `ctdh`
-  ADD CONSTRAINT `ctdh_ibfk_1` FOREIGN KEY (`MaDonHang`) REFERENCES `donhang` (`MaDonHang`);
-ALTER TABLE `ctdh`
-  ADD CONSTRAINT `ctdh_ibfk_2` FOREIGN KEY (`MaSanPham`) REFERENCES `sanpham` (`MaSanPham`);
-
+ALTER TABLE `loai`
+  MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 ALTER TABLE `sanphamgiohang`
   ADD CONSTRAINT `sanphamgiohang_ibfk_1` FOREIGN KEY (`MaSanPham`) REFERENCES `sanpham` (`MaSanPham`);

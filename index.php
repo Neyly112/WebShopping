@@ -12,27 +12,37 @@
 <div>
     <?php
 
-    $maLoai = 17;
+
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
 
         switch ($act) {
             case 'qlsp':
                 if (isset($_POST['ok'])) {
-                    $tenSP = $_POST['tenSP'];
-                    $giaBan = $_POST['giaBan'];
-                    $image = $_FILES['image']['name'];
-                    $path = "./view/Uploads/";
-                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-                    $filename = time() . "." . $image_ext;
-                    $target_file = $path . $filename;
-                    $moTa = $_POST['mota'];
-                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    pdo_executer($sql);
-                    echo '<script language="javascript">';
-                    echo 'alert("Thêm thành công")';
-                    echo '</script>';
+                    $tenLoai = $_POST['loaiDo'];
+                    $sql1 = "SELECT MaLoai FROM `loai` WHERE TenLoai = '$tenLoai'";
+                    $result = pdo_query_one($sql1);
+                    if ($result > 0) {
+                        $maLoai = $result['MaLoai'];
+                        $tenSP = $_POST['tenSP'];
+                        $giaBan = $_POST['giaBan'];
+                        $image = $_FILES['image']['name'];
+                        $path = "./view/Uploads/";
+                        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                        $filename = time() . "." . $image_ext;
+                        $target_file = $path . $filename;
+                        $moTa = $_POST['mota'];
+                        $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
+                        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                        pdo_executer($sql);
+                        echo '<script language="javascript">';
+                        echo 'alert("Thêm thành công")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Loại sản phẩm không tồn tại")';
+                        echo '</script>';
+                    }
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
@@ -86,7 +96,6 @@
                     $tenLoai = $_POST['tenLoai'];
                     $sql = "INSERT INTO `loai`(`TenLoai`) VALUES ('$tenLoai')";
                     pdo_executer($sql);
-                    $thongbao = "Thêm Thành Công";
                 }
                 $sql1 = "SELECT * FROM `loai`";
                 $list = pdo_query($sql1);
@@ -173,34 +182,6 @@
             case 'gttt':
                 include "./view/ThongTin/ThongTin.php";
                 break;
-            case 'xoagiohang':
-
-                $sql1 = "SELECT * FROM `sanphamgiohang`";
-                $list = pdo_query($sql1);
-
-
-                if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
-                    $sql2 = "DELETE FROM `sanphamgiohang` WHERE MaSanPham=" . $_GET['MaSanPham'];
-                    try {
-                        if (!pdo_executer($sql2)) {
-                            echo '<script language="javascript">';
-                            //echo 'alert("Xóa thành công")';
-                            echo '</script>';
-                        } else {
-                            echo '<script language="javascript">';
-                            echo 'alert("Lỗi")';
-                            echo '</script>';
-                        }
-                    } catch (Exception $e) {
-                        echo  '<script language="javascript">';
-                        echo 'alert("Lỗi. Loại đang được gắn với sản phẩm")';
-                        echo '</script>';;
-                    }
-                }
-
-                $list = pdo_query($sql1);
-                include "./crud/crud_giohang/index.php";
-                break;
             case 'addcart':
                 if (isset($_GET['MaSanPham'])) {
                     $MaSanPham = $_GET['MaSanPham'];
@@ -240,37 +221,15 @@
                 //     }
                 //     include './view/Search/HienThiSp.php';
                 //     break;
-            case 'datdonhang':
-                if (isset($_GET['MaSanPham'])) {
-                    $MaDonHang = rand(1000, 9999); // Tạo số ngẫu nhiên từ 1000 đến 9999
-                    $MaSanPham = $_GET['MaSanPham'];
-                    $tongGiaBan = $_GET['tonggiaban'];
-                    $soluong = $_GET['soluong'];
-                    $hoten = $_GET['hoten'];
-                    $sdt = $_GET['sdt'];
-                    $diachi = $_GET['diachi'];
-
-                  
-                    $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$sdt', '$diachi')";
-                    pdo_executer($sql);
-                    $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
-                    pdo_executer($sql2);
-                    $thongbao = "Đặt hàng thành công";
-                    header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
-                    exit();
-                } else {
-                    $thongbao = "lỗi";
-                }
-                include "./view/TrangChu/TrangChu.php";
+            case 'chitietsp':
+                $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
+                $result = pdo_query_one($sql);
+                $image = $result['HinhAnh'];
+                $giaBan = $result['GiaBan'];
+                $moTa = $result['MoTa'];
+                $maSP = $result['MaSanPham'];
+                include './view/TrangChu/product.php';
                 break;
-
-            case 'datnhieusanpham':
-                
-
-                break;
-                case 'dangnhap':
-                    include "./view/DangNhap/DangNhap.php";
-                    break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";

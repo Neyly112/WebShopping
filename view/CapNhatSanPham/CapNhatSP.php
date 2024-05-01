@@ -41,7 +41,11 @@
                     <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="giaBan" id="text" placeholder="500.000" required>
                 </div>
-
+                <div class="col-8">
+                  <label for="email" class="form-label fw-bold">Loại
+                    <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="loaiDo" id="text" placeholder="" required>
+                </div>
                 <div class="col-8">
                   <label for="password" class="form-label fw-bold">Mô tả
                     <span class="text-danger">*</span></label>
@@ -69,6 +73,7 @@
         </div>
 
       </div>
+    </div>
     </div>
   </section>
 
