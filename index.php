@@ -250,7 +250,7 @@
                     $sdt = $_GET['sdt'];
                     $diachi = $_GET['diachi'];
 
-                  
+
                     $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$sdt', '$diachi')";
                     pdo_executer($sql);
                     $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
@@ -265,12 +265,21 @@
                 break;
 
             case 'datnhieusanpham':
-                
+
 
                 break;
-                case 'dangnhap':
-                    include "./view/DangNhap/DangNhap.php";
-                    break;
+            case 'dangnhap':
+                include "./view/DangNhap/DangNhap.php";
+                break;
+            case 'chitietsp':
+                $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
+                $result = pdo_query_one($sql);
+                $image = $result['HinhAnh'];
+                $giaBan = $result['GiaBan'];
+                $moTa = $result['MoTa'];
+                $maSP = $result['MaSanPham'];
+                include './view/TrangChu/product.php';
+                break;
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
