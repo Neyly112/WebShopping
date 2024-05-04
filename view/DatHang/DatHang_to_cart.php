@@ -1,6 +1,8 @@
+User
 <?php
 include('./dbconnect.php');
 $selectedProducts = [];
+$MangMaSP = []; // Khởi tạo mảng để chứa các mã sản phẩm
 
 if (isset($_GET['selectedProductIds'])) {
     $selectedProductIds = explode(',', $_GET['selectedProductIds']);
@@ -11,9 +13,11 @@ if (isset($_GET['selectedProductIds'])) {
 
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $selectedProducts[] = $row;
+        array_push($MangMaSP, array('MaSanPham' => $row['MaSanPham'], 'SoLuong' => 1));
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +51,7 @@ if (isset($_GET['selectedProductIds'])) {
                                     <h5 class="text-primary"><?php echo $row['TenSanPham']; ?></h5>
                                     <div class="d-flex align-items-center">
                                         <p class="fw-bold mb-0 me-5 pe-3">Mã<?php echo $row['MaSanPham']; ?></p>
-                                        <p class="fw-bold mb-0 me-5 pe-3" style="color: green;"><?php echo $row['GiaBan']; ?>đ</p>
+                                        <p class="fw-bold mb-0 me-5 pe-3" style="color: green;"><strong><?php echo $row['GiaBan']; ?> đ</strong></p>
                                         <?php $total_def += $row['GiaBan']; ?>
                                         <div>SL:
                                             <input class="quantity fw-bold text-black" min="0" name="soluong" value="1" type="text" style="width: 50px;">
@@ -71,24 +75,25 @@ if (isset($_GET['selectedProductIds'])) {
                         <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">THÔNG TIN NGƯỜI NHẬN</h3>
                     </div>
 
-                    <form class="mb-5" action="" method="post" enctype="multipart/form-data">
+                    <form id="datdonhangForm" action='index.php?' method='GET' class="mb-5" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
-                                    <label class="form-label fw-bold" for="tenSP">Họ tên <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="tenSP" id="tenSP"  required>
+                                <input type="hidden" name="act" id="act" value="datnhieusanpham">
+                                    <label class="form-label fw-bold" for="hoten">Họ tên <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="hoten" id="hoten" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
-                                    <label class="form-label fw-bold" for="giaBan">Số điện thoại <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="giaBan" id="giaBan"  required>
+                                    <label class="form-label fw-bold" for="sdt">Số điện thoại <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="sdt" id="sdt" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group" style="padding: 10px;">
-                                    <label class="form-label fw-bold" for="mota">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="mota" id="mota"  required>
+                                    <label class="form-label fw-bold" for="diachi">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="diachi" id="diachi" required>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -98,31 +103,91 @@ if (isset($_GET['selectedProductIds'])) {
                                     <input type="text" id="typeName" class="form-control form-control-lg" size="17" value="Thanh Toán Khi Nhận Hàng" name="phone" disabled>
                                 </div>
                             </div>
+
                             <div class="col-12">
-                                <input class="btn btn-primary btn-block btn-lg mt-3" type="submit" value="Đặt hàng" name="dathang" id="dathang">
+
+
+                                <input id="dathangButton" class="btn btn-primary btn-block btn-lg mt-3" type="submit" value="Đặt hàng" name="dathang">
+                            </div>
+                            <div>
+
+                               
+                                <!-- Loop through selected products to add hidden inputs for product ids and quantities -->
+                                <?php foreach ($selectedProducts as $index => $product) : ?>
+                                    <input type="hidden" name="product_ids[]" value="<?php echo $product['MaSanPham']; ?>">
+                                    <!-- Set default value to 1 if input is empty -->
+                                    <input type="hidden" name="quantities[]" id="quantity<?php echo $index; ?>" value="1">
+                                <?php endforeach; ?>
+                                <input type="hidden" name="tonggiaban" id="tonggiaban">
 
                             </div>
-
-
                     </form>
-
                 </div>
             </div>
+        </div>
 </body>
 
 </html>
-<!-- JavaScript -->
+<script>
+    var quantityInputs = document.querySelectorAll('.quantity');
 
+    quantityInputs.forEach(function(input, index) {
+        input.addEventListener('input', function() {
+            var quantity = parseInt(input.value);
+            var productId = input.dataset.productId;
+            var quantityInput = document.getElementById('quantity' + index);
+            quantityInput.value = quantity;
+        });
+    });
+</script>
+<script>
+    document.getElementById('dathangButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        var form = document.getElementById('datdonhangForm');
+
+        // Calculate total price
+        var totalPrice = calculateTotalPrice();
+        
+        // Set total price to the hidden input
+        var tongGiaBanInput = document.getElementById('tonggiaban');
+        tongGiaBanInput.value = totalPrice;
+        var form = document.getElementById('datdonhangForm');
+        var quantityInputs = document.querySelectorAll('.quantity');
+        quantityInputs.forEach(function(input) {
+            if (input.value.trim() === '') {
+                input.value = '1';
+            }
+        });
+
+        // Submit the form
+        form.submit();
+    });
+
+    function calculateTotalPrice() {
+        var totalPrice = 0;
+        var giaBans = <?php echo json_encode(array_column($selectedProducts, 'GiaBan')); ?>;
+        var quantityInputs = document.querySelectorAll('.quantity');
+
+        quantityInputs.forEach(function(input, index) {
+            var quantity = parseInt(input.value);
+            totalPrice += quantity * giaBans[index];
+        });
+
+        return totalPrice;
+    }
+</script>
+
+
+<!-- Lắng nghe sự kiện quantity thay đổi (đã chính x)-->
 <script>
     var tongGiaBan = 0;
     var soluongInputs = document.querySelectorAll('.quantity');
     var giaBans = <?php echo json_encode(array_column($selectedProducts, 'GiaBan')); ?>;
-
     soluongInputs.forEach(function(input, index) {
         input.addEventListener('input', function() {
             var soluong = parseInt(input.value);
             tongGiaBan = 0;
-
+            thongtinsp = [];
             soluongInputs.forEach(function(input, i) {
                 var soluong = parseInt(input.value);
                 tongGiaBan += soluong * giaBans[i];

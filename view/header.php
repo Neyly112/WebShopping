@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="./index.php">
             <img src="./view/TrangChu/sliders/LOGO_NEW.png" alt="Bootstrap"height="45">
           </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,6 @@
               <li><a class="dropdown-item" href="index.php?act=gt">Đơn hàng của tôi</a></li>
               <li><a class="dropdown-item" href="index.php?act=dh">Đổi mật khẩu</a></li>
               <li><a class="dropdown-item" href="index.php?act=dx">Đăng xuất</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="index.php?act=qldh">Quản lý đơn hàng</a></li>
               <li><a class="dropdown-item" href="index.php?act=qlsp">Quản lý sản phẩm</a></li>
               <li><a class="dropdown-item" href="index.php?act=dm">Quản lý danh mục</a></li>
