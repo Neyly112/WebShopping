@@ -299,9 +299,21 @@
                     }
                     include "./view/TrangChu/TrangChu.php";
                     break;
+<<<<<<< Updated upstream
+
+=======
+                
+>>>>>>> Stashed changes
 
 
+
+
+
+
+            case 'dangnhap':
+                include "./view/DangNhap/DangNhap.php";
                 break;
+<<<<<<< Updated upstream
             case 'dangnhap':
                 include "./view/DangNhap/DangNhap.php";
                 break;
@@ -314,6 +326,8 @@
                 $maSP = $result['MaSanPham'];
                 include './view/TrangChu/product.php';
                 break;
+=======
+>>>>>>> Stashed changes
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
