@@ -264,46 +264,38 @@
                 include "./view/TrangChu/TrangChu.php";
                 break;
 
-                case 'datnhieusanpham':
-                    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-                        // Lấy dữ liệu từ POST
-                       
-                        $tongGiaBan = $_GET['tonggiaban'];
+            case 'datnhieusanpham':
+                if ($_SERVER["REQUEST_METHOD"] == "GET") {
+                    // Lấy dữ liệu từ POST
 
-                        $hoten = $_GET['hoten'];
-                        $soDienThoai = $_GET['sdt'];
-                        $diachi =$_GET['diachi'];
-                        $selectedProductIds = $_GET['product_ids'];
-                        $quantities = $_GET['quantities'];
-                      
-                        $MaDonHang = rand(1000, 9999);
-                        $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$soDienThoai', '$diachi')";
-                        pdo_executer($sql);
+                    $tongGiaBan = $_GET['tonggiaban'];
 
-                        for ($i = 0; $i < count($selectedProductIds); $i++) {
-                            $MaSanPham= $selectedProductIds[$i];
-                            $soluong = $quantities[$i];
-                           
-                            $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
-                            pdo_executer($sql2);
-                            
+                    $hoten = $_GET['hoten'];
+                    $soDienThoai = $_GET['sdt'];
+                    $diachi = $_GET['diachi'];
+                    $selectedProductIds = $_GET['product_ids'];
+                    $quantities = $_GET['quantities'];
 
-                            
-                        }
-                        $thongbao = "Đặt hàng thành công";
-                        header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
-                        exit();
-                    } else {
-                        // Xử lý trường hợp không thành công
-                        $thongbao = "Lỗi khi đặt hàng";
+                    $MaDonHang = rand(1000, 9999);
+                    $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$soDienThoai', '$diachi')";
+                    pdo_executer($sql);
+
+                    for ($i = 0; $i < count($selectedProductIds); $i++) {
+                        $MaSanPham = $selectedProductIds[$i];
+                        $soluong = $quantities[$i];
+
+                        $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
+                        pdo_executer($sql2);
                     }
-                    include "./view/TrangChu/TrangChu.php";
-                    break;
-<<<<<<< Updated upstream
-
-=======
-                
->>>>>>> Stashed changes
+                    $thongbao = "Đặt hàng thành công";
+                    header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
+                    exit();
+                } else {
+                    // Xử lý trường hợp không thành công
+                    $thongbao = "Lỗi khi đặt hàng";
+                }
+                include "./view/TrangChu/TrangChu.php";
+                break;
 
 
 
@@ -313,7 +305,7 @@
             case 'dangnhap':
                 include "./view/DangNhap/DangNhap.php";
                 break;
-<<<<<<< Updated upstream
+
             case 'dangnhap':
                 include "./view/DangNhap/DangNhap.php";
                 break;
@@ -326,8 +318,6 @@
                 $maSP = $result['MaSanPham'];
                 include './view/TrangChu/product.php';
                 break;
-=======
->>>>>>> Stashed changes
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
@@ -335,9 +325,7 @@
 
 
     ?>
-
 </div>
-
 <?php
 include "./view/Footer.php";
 ?>
