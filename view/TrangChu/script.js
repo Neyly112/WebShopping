@@ -1,15 +1,4 @@
-// Function to add product to cart using AJAX
-function addToCart(productId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "add_to_cart.php?MaSanPham=" + productId, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Show success message
-            showSuccessMessage();
-        }
-    };
-    xhr.send();
-}
+
 
 // Function to show the success message and auto-close it after a certain time
 function showSuccessMessage() {
@@ -19,5 +8,5 @@ function showSuccessMessage() {
     document.body.appendChild(successMessage);
     setTimeout(function() {
         successMessage.remove();
-    }, 3000); // 3 seconds
+    }, 10000); // 3 seconds
 }

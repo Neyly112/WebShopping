@@ -1,3 +1,4 @@
+
 <?php
 include('./dbconnect.php');
 
@@ -22,9 +23,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $rowNum++;
 }
 ?>
-
-
-
+<script src="./crud/crud_giohang/script.js"></script>
 <link rel="stylesheet" type="text/css" href="./crud/crud_giohang/style.css" />
 <!-- Liên kết JS Jquery bằng CDN -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -117,4 +116,3 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
 
 
-<script src="./crud/crud_giohang/script.js"></script>

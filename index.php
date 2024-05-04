@@ -233,13 +233,7 @@
                 }
                 include './view/Search/Search.php';
                 break;
-                // case 'search':
-                //     if (isset($_REQUEST['search'])) {
-                //         $search = $_REQUEST['search'];
-                //         echo $search;
-                //     }
-                //     include './view/Search/HienThiSp.php';
-                //     break;
+
             case 'datdonhang':
                 if (isset($_GET['MaSanPham'])) {
                     $MaDonHang = rand(1000, 9999); // Tạo số ngẫu nhiên từ 1000 đến 9999
@@ -328,11 +322,7 @@
                 $moTa = $result['MoTa'];
                 $maSP = $result['MaSanPham'];
 
-                // Construct the URL with GET parameters
-                $url = './view/DatHang/DatHang.php?MaSanPham=' . $maSP . '&TenSanPham=' . $ten . '&GiaBan=' . $giaBan . '&HinhAnh=' . $hinhanh . '&data-product-id=' . $maSP;
-
-                // Include the file with the constructed URL
-                include $url;
+                header("Location: ./index.php?act=buy&MaSanPham=$maSP&TenSanPham=$ten&GiaBan=$giaBan&HinhAnh=$hinhanh&data-product-id=$maSP");
                 break;
         }
     } else {
@@ -342,6 +332,9 @@
 
     ?>
 </div>
+
+<div>
 <?php
-include "./view/Footer.php";
+    include "./view/Footer.php";
 ?>
+</div>
