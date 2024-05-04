@@ -1,6 +1,6 @@
 
 <script src="script.js"></script>
-
+<?php include 'lienhe.php'?>;
 <div class="container mt-4">
         <!--slider-->
         <div class="row">
@@ -84,4 +84,3 @@
         </div>
     </div>
 </div>
-
