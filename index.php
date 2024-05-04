@@ -316,7 +316,23 @@
                 $giaBan = $result['GiaBan'];
                 $moTa = $result['MoTa'];
                 $maSP = $result['MaSanPham'];
+
                 include './view/TrangChu/product.php';
+                break;
+            case 'muachitietsp':
+                $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
+                $result = pdo_query_one($sql);
+                $hinhanh = $result['HinhAnh'];
+                $giaBan = $result['GiaBan'];
+                $ten = $result['TenSanPham'];
+                $moTa = $result['MoTa'];
+                $maSP = $result['MaSanPham'];
+
+                // Construct the URL with GET parameters
+                $url = './view/DatHang/DatHang.php?MaSanPham=' . $maSP . '&TenSanPham=' . $ten . '&GiaBan=' . $giaBan . '&HinhAnh=' . $hinhanh . '&data-product-id=' . $maSP;
+
+                // Include the file with the constructed URL
+                include $url;
                 break;
         }
     } else {
