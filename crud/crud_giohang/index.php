@@ -1,4 +1,3 @@
-
 <?php
 include('./dbconnect.php');
 
@@ -23,6 +22,7 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $rowNum++;
 }
 ?>
+
 <script src="./crud/crud_giohang/script.js"></script>
 <link rel="stylesheet" type="text/css" href="./crud/crud_giohang/style.css" />
 <!-- Liên kết JS Jquery bằng CDN -->
@@ -65,54 +65,53 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         margin-top: 10px;
     }
 </style>
+<section>
 
-<div class="container">
-    <h1 style="text-align: center;">
-        GIỎ HÀNG
-        <i class="fas fa-shopping-cart"></i>
-    </h1>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <?php foreach ($data as $row) : ?>
-                <div>
-                    <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-4">
-                                <?php $imageDirectory = "./view/Uploads/"; ?>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
+    <div class="container">
+        <h1 style="text-align: center;">
+            GIỎ HÀNG
+            <i class="fas fa-shopping-cart"></i>
+        </h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <?php foreach ($data as $row) : ?>
+                    <div>
+                        <input class="form-check-input" type="checkbox" name="check" id="check<?php echo $row['MaSanPham']; ?>" value="<?php echo $row['MaSanPham']; ?>">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <?php $imageDirectory = "./view/Uploads/"; ?>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="<?php echo $imageDirectory . $row['HinhAnh']; ?>" class="img-fluid" style="width: 150px;height: 200px" alt="Generic placeholder image">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
+                                <div class="col-md-8">
 
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
-                                    <p class="card-text">Mã <?php echo $row['MaSanPham']; ?></p>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?php echo $row['TenSanPham']; ?></h5>
+                                        <p class="card-text">Mã <?php echo $row['MaSanPham']; ?></p>
 
-                                    <p class="card-text" style="color: red;"><strong><?php echo $row['GiaBan']; ?>đ</strong></p>
+                                        <p class="card-text" style="color: red;"><strong><?php echo $row['GiaBan']; ?>đ</strong></p>
 
-                                </div>
+                                    </div>
 
 
-                                <div>
-                                    <a id="xoa" href="index.php?act=xoagiohang&MaSanPham=<?php echo $row['MaSanPham']; ?>" class="btn btn-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div>
+                                        <a id="xoa" href="index.php?act=xoagiohang&MaSanPham=<?php echo $row['MaSanPham']; ?>" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+
+            </div>
 
         </div>
-
+        <div class="float-right">
+            <button id="buyBtn" class="btn btn-success" style="font-size: 18px;">Mua hàng</button>
+        </div>
     </div>
-    <div class="float-right">
-        <button id="buyBtn" class="btn btn-success" style="font-size: 18px;">Mua hàng</button>
-    </div>
-</div>
-
-
-
+</section>
