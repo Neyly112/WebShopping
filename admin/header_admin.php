@@ -25,7 +25,7 @@
               TÀI KHOẢN
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="index.php?act=dh">Đổi mật khẩu</a></li>
+              <li><a class="dropdown-item" href="index.php?act=dmk">Đổi mật khẩu</a></li>
               <!-- <li><a class="dropdown-item" href="index.php?act=dx">Đăng xuất</a></li> -->
             </ul>
           </li>

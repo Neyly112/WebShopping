@@ -192,6 +192,12 @@
                 }
                 include '../view/Search/Search.php';
                 break;
+            case 'dmk':
+                include '../view/TaiKhoan/doimatkhau.php';
+                break;
+            case 'checkmk':
+                include'../view/TaiKhoan/checkmk.php';
+                break;
             default:
                 
                 break;     
