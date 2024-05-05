@@ -73,19 +73,31 @@
                 break;
             case 'capnhatSP':
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $TenSP = $_POST['ten'];
-                    $giaBan = $_POST['gia'];
-                    $MaSanPham = $_POST['MaSanPham'];
-                    $MaLoai = $_POST['MaLoai'];
-                    $image = $_FILES['image1']['name'];
-                    $path = "./view/Uploads/";
-                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-                    $filename = time() . "." . $image_ext;
-                    $target_file = $path . $filename;
-                    move_uploaded_file($_FILES['image1']['tmp_name'], $target_file);
-                    $sql = "UPDATE `sanpham` SET `MaLoai`='$MaLoai', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $filename . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
-                    pdo_executer($sql);
-                    $thongbao = "Cập Nhật Thành Công";
+                    
+                    $tenLoai = $_POST['loaiDo'];
+                    $sql1 = "SELECT MaLoai FROM `loai` WHERE TenLoai = '$tenLoai'";
+                    $result = pdo_query_one($sql1);
+                    if ($result > 0) {
+                        $MaLoaiN = $result["MaLoai"];
+                        $TenSP = $_POST['ten'];
+                        $giaBan = $_POST['gia'];
+                        $MaSanPham = $_POST['MaSanPham'];
+                        $image = $_FILES['image1']['name'];
+                        $path = "./view/Uploads/";
+                        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                        $filename = time() . "." . $image_ext;
+                        $target_file = $path . $filename;
+                        move_uploaded_file($_FILES['image1']['tmp_name'], $target_file);
+                        $sql = "UPDATE `sanpham` SET `MaLoai`='$MaLoaiN', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $filename . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
+                        pdo_executer($sql);
+                        echo '<script language="javascript">';
+                        echo 'alert("Thêm thành công")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Loại sản phẩm không tồn tại")';
+                        echo '</script>';
+                    }
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
