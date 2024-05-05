@@ -69,7 +69,8 @@ if (is_array($dm)) {
                                     <div class="col-12">
                                         <label for="password" class="form-label fw-bold">File hình ảnh
                                             <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="file" id="image1" name="image1" >
+                                        <input class="form-control" type="file" id="image1" name="image1" value="<?php if (isset($filename) && ($filename != ""))
+                                                                                                                                echo $filename; ?>" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="d-grid row">

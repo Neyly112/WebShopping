@@ -193,13 +193,7 @@
                 include '../view/Search/Search.php';
                 break;
             default:
-                $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
-                $result = pdo_query_one($sql);
-                $image = $result['HinhAnh'];
-                $giaBan = $result['GiaBan'];
-                $moTa = $result['MoTa'];
-                $maSP = $result['MaSanPham'];
-                include '../view/TrangChu/product.php';
+                
                 break;     
         }
     } 

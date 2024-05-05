@@ -30,7 +30,7 @@
               </div>
             </div>
             <form action="" method="post" enctype="multipart/form-data">
-              <div class="row gy-1 gy-md-3 overflow-hidden">
+              <div class="row gy-3 gy-md-4 overflow-hidden">
                 <div class="col-8">
                   <label for="email" class="form-label fw-bold">Tên sản phẩm
                     <span class="text-danger">*</span></label>
