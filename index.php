@@ -19,20 +19,30 @@
         switch ($act) {
             case 'qlsp':
                 if (isset($_POST['ok'])) {
-                    $tenSP = $_POST['tenSP'];
-                    $giaBan = $_POST['giaBan'];
-                    $image = $_FILES['image']['name'];
-                    $path = "./view/Uploads/";
-                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-                    $filename = time() . "." . $image_ext;
-                    $target_file = $path . $filename;
-                    $moTa = $_POST['mota'];
-                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    pdo_executer($sql);
-                    echo '<script language="javascript">';
-                    echo 'alert("Thêm thành công")';
-                    echo '</script>';
+                    $tenLoai = $_POST['loaiDo'];
+                    $sql1 = "SELECT MaLoai FROM `loai` WHERE TenLoai = '$tenLoai'";
+                    $result = pdo_query_one($sql1);
+                    if ($result > 0) {
+                        $maLoai = $result['MaLoai'];
+                        $tenSP = $_POST['tenSP'];
+                        $giaBan = $_POST['giaBan'];
+                        $image = $_FILES['image']['name'];
+                        $path = "./view/Uploads/";
+                        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                        $filename = time() . "." . $image_ext;
+                        $target_file = $path . $filename;
+                        $moTa = $_POST['mota'];
+                        $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
+                        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                        pdo_executer($sql);
+                        echo '<script language="javascript">';
+                        echo 'alert("Thêm thành công")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Loại sản phẩm không tồn tại")';
+                        echo '</script>';
+                    }
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
