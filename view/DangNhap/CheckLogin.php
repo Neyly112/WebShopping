@@ -2,35 +2,7 @@
 <html>
 <head>
     <title>Đăng nhập</title>
-    <style>
-        /* CSS để căn giữa và thiết lập kiểu dáng cho hộp thông báo */
-        #error-box {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #f8d7da;
-            color: #721c24;
-            padding: 20px;
-            border: 1px solid #f5c6cb;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-
-        /* CSS cho nút OK */
-        #ok-button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block; /* Để nút OK trở thành một phần tử block */
-    margin: 0 auto; /* Canh giữa theo chiều ngang */
-}
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <?php
@@ -48,7 +20,7 @@
 
         if(mysqli_num_rows($result) == 1) {
             echo ('thanh cong');
-            header("Location:../../index.php");
+            header("Location:../../admin/index.php");
             exit();
         } else {
             $error_message = "Email hoặc mật khẩu không đúng, vui lòng thử lại.";
@@ -83,7 +55,7 @@
         function hideError() {
             var errorBox = document.getElementById('error-box');
             errorBox.style.display = 'none'; // Ẩn hộp thông báo
-            window.location.href ='./DangNhap.php';
+            window.location.href ='../../index.php?act=dangnhap';
         }
     </script>
 </body>

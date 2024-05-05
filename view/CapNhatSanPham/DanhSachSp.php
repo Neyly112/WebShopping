@@ -44,7 +44,7 @@
                               <td><?= $item["TenSanPham"]; ?></td>
                               <td><?= $item["GiaBan"]; ?></td>
                               <td><?= $tenLoai; ?></td>
-                              <td> <img src="./view/uploads/<?= $item["HinhAnh"]; ?>" width="100px" height="100px"></td>
+                              <td> <img src="../view/uploads/<?= $item["HinhAnh"]; ?>" width="100px" height="100px"></td>
                               <td><?= $item["MoTa"]; ?></td>
                               <td><a href="<?= "index.php?act=suaSp&MaSanPham= " . $item["MaSanPham"]; ?>"><input class="btn btn-danger btn-sm" type="button" value="Sửa" name="" id=""> </a>
                                 <a href="<?= "index.php?act=xoaSp&MaSanPham= " . $item["MaSanPham"]; ?>"><input class="btn btn-danger btn-sm" type="button" value="Xóa" name="" id=""> </a>
