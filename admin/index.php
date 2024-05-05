@@ -192,7 +192,7 @@
                 }
                 include '../view/Search/Search.php';
                 break;
-            case 'chitietsp':
+            default:
                 $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
                 $result = pdo_query_one($sql);
                 $image = $result['HinhAnh'];
@@ -200,11 +200,9 @@
                 $moTa = $result['MoTa'];
                 $maSP = $result['MaSanPham'];
                 include '../view/TrangChu/product.php';
-                break;
+                break;     
         }
-    } else {
-        include "index.php";
-    }
+    } 
 
 
     ?>
