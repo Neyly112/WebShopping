@@ -12,27 +12,37 @@
 <div>
     <?php
 
-    $maLoai = 17;
+
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
 
         switch ($act) {
             case 'qlsp':
                 if (isset($_POST['ok'])) {
-                    $tenSP = $_POST['tenSP'];
-                    $giaBan = $_POST['giaBan'];
-                    $image = $_FILES['image']['name'];
-                    $path = "../view/Uploads/";
-                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-                    $filename = time() . "." . $image_ext;
-                    $target_file = $path . $filename;
-                    $moTa = $_POST['mota'];
-                    $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
-                    move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                    pdo_executer($sql);
-                    echo '<script language="javascript">';
-                    echo 'alert("Thêm thành công")';
-                    echo '</script>';
+                    $tenLoai = $_POST['loaiDo'];
+                    $sql1 = "SELECT MaLoai FROM `loai` WHERE TenLoai = '$tenLoai'";
+                    $result = pdo_query_one($sql1);
+                    if ($result > 0) {
+                        $maLoai = $result['MaLoai'];
+                        $tenSP = $_POST['tenSP'];
+                        $giaBan = $_POST['giaBan'];
+                        $image = $_FILES['image']['name'];
+                        $path = "./view/Uploads/";
+                        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                        $filename = time() . "." . $image_ext;
+                        $target_file = $path . $filename;
+                        $moTa = $_POST['mota'];
+                        $sql = "INSERT INTO `sanpham`(`MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `GiaBan`) VALUES ('$maLoai','$tenSP', '$filename', '$moTa','$giaBan')";
+                        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                        pdo_executer($sql);
+                        echo '<script language="javascript">';
+                        echo 'alert("Thêm thành công")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Loại sản phẩm không tồn tại")';
+                        echo '</script>';
+                    }
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
@@ -58,24 +68,39 @@
                 if (isset($_GET['MaSanPham']) && ($_GET['MaSanPham'] > 0)) {
                     $sql = "SELECT * FROM `sanpham` WHERE MaSanPham=" . $_GET['MaSanPham'];
                     $dm = pdo_query_one($sql); //chỉ lấy 1 truy vấn
+                    $MaLoai = $dm['MaLoai'];
+                    $sql1 = "SELECT TenLoai FROM `loai` WHERE MaLoai = $MaLoai";
+                    $result = pdo_query_one($sql1);
+                    $tenLoai = $result['TenLoai'];
                 }
                 include "../view/CapNhatSanPham/SuaSp.php";
                 break;
             case 'capnhatSP':
                 if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-                    $TenSP = $_POST['ten'];
-                    $giaBan = $_POST['gia'];
-                    $MaSanPham = $_POST['MaSanPham'];
-                    $MaLoai = $_POST['MaLoai'];
-                    $image = $_FILES['image1']['name'];
-                    $path = "../view/Uploads/";
-                    $image_ext = pathinfo($image, PATHINFO_EXTENSION);
-                    $filename = time() . "." . $image_ext;
-                    $target_file = $path . $filename;
-                    move_uploaded_file($_FILES['image1']['tmp_name'], $target_file);
-                    $sql = "UPDATE `sanpham` SET `MaLoai`='$MaLoai', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $filename . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
-                    pdo_executer($sql);
-                    $thongbao = "Cập Nhật Thành Công";
+                    $tenLoai = $_POST['loaiDo'];
+                    $sql1 = "SELECT MaLoai FROM `loai` WHERE TenLoai = '$tenLoai'";
+                    $result = pdo_query_one($sql1);
+                    if ($result > 0) {
+                        $MaLoaiN = $result["MaLoai"];
+                        $TenSP = $_POST['ten'];
+                        $giaBan = $_POST['gia'];
+                        $MaSanPham = $_POST['MaSanPham'];
+                        $image = $_FILES['image1']['name'];
+                        $path = "./view/Uploads/";
+                        $image_ext = pathinfo($image, PATHINFO_EXTENSION);
+                        $filename = time() . "." . $image_ext;
+                        $target_file = $path . $filename;
+                        move_uploaded_file($_FILES['image1']['tmp_name'], $target_file);
+                        $sql = "UPDATE `sanpham` SET `MaLoai`='$MaLoaiN', `TenSanPham`='" . $TenSP . "',`HinhAnh`='" . $filename . "',`MoTa`='ao',`GiaBan`='" . $giaBan . "' WHERE MaSanPham=" . $MaSanPham;
+                        pdo_executer($sql);
+                        echo '<script language="javascript">';
+                        echo 'alert("Thêm thành công")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Loại sản phẩm không tồn tại")';
+                        echo '</script>';
+                    }
                 }
                 $sql1 = "SELECT * FROM `sanpham`";
                 $list = pdo_query($sql1);
@@ -138,13 +163,15 @@
                     $MaLoai = $_POST['MaLoai'];
                     $sql = "UPDATE `loai` SET `TenLoai`='" . $TenLoai . "' WHERE MaLoai=" . $MaLoai;
                     pdo_executer($sql);
-                    $thongbao = "Cập Nhật Thành Công";
+                    echo '<script language="javascript">';
+                    echo 'alert("Cập nhật thành công")';
+                    echo '</script>';
                 }
                 $sql1 = "SELECT * FROM `loai`";
                 $list = pdo_query($sql1);
                 include "../view/LoaiSanPham/ThemLoaiSP.php";
                 break;
-         
+
             case 'tc':
                 include "../index.php";
                 break;
@@ -157,15 +184,23 @@
                 }
                 include '../view/TrangChu/SpTheoDanhMuc.php';
                 break;
-
-            // case 'search':
-            //     if ($_POST['nameSearch']) {
-            //         $search = $_POST['nameSearch'];
-            //     } else {
-            //         $search = '//';
-            //     }
-            //     include './view/Search/Search.php';
-            //     break;
+            case 'search':
+                if ($_POST['nameSearch']) {
+                    $search = $_POST['nameSearch'];
+                } else {
+                    $search = '//';
+                }
+                include '../view/Search/Search.php';
+                break;
+            case 'chitietsp':
+                $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
+                $result = pdo_query_one($sql);
+                $image = $result['HinhAnh'];
+                $giaBan = $result['GiaBan'];
+                $moTa = $result['MoTa'];
+                $maSP = $result['MaSanPham'];
+                include '../view/TrangChu/product.php';
+                break;
         }
     } else {
         include "index.php";
@@ -176,7 +211,7 @@
 </div>
 
 <div>
-<?php
+    <?php
     include "../view/Footer.php";
-?>
+    ?>
 </div>
