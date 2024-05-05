@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liên hệ động nổi</title>
+
 <style>
   #contactButtonFacebook {
     position: fixed;
@@ -83,20 +78,9 @@
     display: none;
   }
 </style>
-</head>
-<body>
 
 <button id="contactButtonFacebook"></button>
 <button id="contactButtonZalo"></button>
-
-<div id="contactForm">
-  <form>
-    <input type="text" placeholder="Tên của bạn"><br>
-    <input type="email" placeholder="Email của bạn"><br>
-    <textarea placeholder="Nội dung"></textarea><br>
-    <button type="submit">Gửi</button>
-  </form>
-</div>
 
 <script>
   document.getElementById("contactButtonFacebook").addEventListener("click", function() {
@@ -108,5 +92,3 @@
   });
 </script>
 
-</body>
-</html>

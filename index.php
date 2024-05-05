@@ -177,6 +177,7 @@
 
                 include './view/TrangChu/product.php';
                 break;
+                
             case 'muachitietsp':
                 $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
                 $result = pdo_query_one($sql);
@@ -185,9 +186,10 @@
                 $ten = $result['TenSanPham'];
                 $moTa = $result['MoTa'];
                 $maSP = $result['MaSanPham'];
-
+                
                 header("Location: ./index.php?act=buy&MaSanPham=$maSP&TenSanPham=$ten&GiaBan=$giaBan&HinhAnh=$hinhanh&data-product-id=$maSP");
                 break;
+
             case 'qmk':
                 include './view/DangNhap/quenmk.php';
                 break;

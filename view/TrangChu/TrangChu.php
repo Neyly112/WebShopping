@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<title>Trang chủ</title>
 
 <script src="script.js"></script>
 <?php include 'lienhe.php'?>;
