@@ -9,3 +9,16 @@
     border-radius: 5px;
     z-index: 9999;
 }
+
+.card {
+    width: 100%; /* Đặt kích thước của thẻ card */
+    height: 400px; /* Đặt chiều cao của thẻ card */
+    margin-bottom: 20px; /* Đặt khoảng cách giữa các thẻ card */
+    /* Bổ sung các thuộc tính CSS khác nếu cần thiết */
+}
+
+.card .card-body {
+    /* Thiết lập chiều cao cho phần nội dung bên trong thẻ card */
+    height: calc(100% - 60px); /* 60px là chiều cao dự kiến của phần header và footer bên trong thẻ card */
+    overflow: hidden; /* Ẩn phần dư thừa của nội dung khi quá dài */
+}

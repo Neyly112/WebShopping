@@ -50,7 +50,7 @@ if (isset($_GET['selectedProductIds'])) {
                                     <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
                                     <h5 class="text-primary"><?php echo $row['TenSanPham']; ?></h5>
                                     <div class="d-flex align-items-center">
-                                        <p class="fw-bold mb-0 me-5 pe-3">Mã<?php echo $row['MaSanPham']; ?></p>
+                                        <p class="fw-bold mb-0 me-5 pe-3">Mã <?php echo $row['MaSanPham']; ?></p>
                                         <p class="fw-bold mb-0 me-5 pe-3" style="color: green;"><strong><?php echo $row['GiaBan']; ?> đ</strong></p>
                                         <?php $total_def += $row['GiaBan']; ?>
                                         <div>SL:

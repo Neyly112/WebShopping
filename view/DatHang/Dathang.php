@@ -52,7 +52,7 @@
                         <h5 class="text-primary"><?php echo  $TenSanPham; ?></h5>
 
                         <div class="d-flex align-items-center">
-                            <p class="fw-bold mb-0 me-5 pe-3">Mã<?php echo $MaSanPham; ?></p>
+                            <p class="fw-bold mb-0 me-5 pe-3">Mã <?php echo $MaSanPham; ?></p>
                             <p class="fw-bold mb-0 me-5 pe-3 " style="color: green;"><strong><?php echo $GiaBan; ?> đ</strong></p>
                             <?php $soluong = 1 ?>
                             <div class="def-number-input number-input safari_only">SL:
