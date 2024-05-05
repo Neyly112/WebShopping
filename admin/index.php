@@ -27,7 +27,7 @@
                         $tenSP = $_POST['tenSP'];
                         $giaBan = $_POST['giaBan'];
                         $image = $_FILES['image']['name'];
-                        $path = "./view/Uploads/";
+                        $path = "../view/Uploads/";
                         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
                         $filename = time() . "." . $image_ext;
                         $target_file = $path . $filename;
@@ -86,7 +86,7 @@
                         $giaBan = $_POST['gia'];
                         $MaSanPham = $_POST['MaSanPham'];
                         $image = $_FILES['image1']['name'];
-                        $path = "./view/Uploads/";
+                        $path = "../view/Uploads/";
                         $image_ext = pathinfo($image, PATHINFO_EXTENSION);
                         $filename = time() . "." . $image_ext;
                         $target_file = $path . $filename;
@@ -212,6 +212,6 @@
 
 <div>
     <?php
-    include "../view/Footer.php";
+    include "./Footer.php";
     ?>
 </div>
