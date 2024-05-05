@@ -1,6 +1,9 @@
 <?php
+
 $imageDirectory = "./view/Uploads/" . $image;
+
 $page_description = htmlspecialchars_decode(htmlspecialchars_decode($moTa));
+
 ?>
 
 <div class='row container justify-center'>
