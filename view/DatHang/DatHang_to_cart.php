@@ -1,4 +1,4 @@
-User
+
 <?php
 include('./dbconnect.php');
 $selectedProducts = [];
