@@ -37,4 +37,4 @@ $page_description = htmlspecialchars_decode(htmlspecialchars_decode($moTa));
 </div>
 
 </div>
-<script src="./view/TrangChu/script.js"></script>
+
