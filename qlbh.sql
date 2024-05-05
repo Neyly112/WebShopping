@@ -66,7 +66,7 @@ CREATE TABLE `loai` (
 --
 
 INSERT INTO `loai` (`MaLoai`, `TenLoai`) VALUES
-(0, 'THU ĐÔNG'),
+(3, 'THU ĐÔNG'),
 (1, 'THỜI TRANG NỮ'),
 (2, 'THỜI TRANG NAM'),
 (11, 'BEST SELLER');
@@ -95,10 +95,10 @@ INSERT INTO `sanpham` (`MaSanPham`, `MaLoai`, `TenSanPham`, `HinhAnh`, `MoTa`, `
 (27, 1, 'TÚI ĐEO VAI TRICE  BELTED', '1714903453.jpg', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '50000000'),
 (28, 1, 'ĐẦM SOLLIESS COTTON-ĐEN', '1714902443.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '30000000'),
 (29, 1, 'SET ÁO VÁY DEMIN ', '1714903469.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '4000000'),
-(30, 0, 'SET ÁO VÁY MONSTER ', '1714903570.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '70000000'),
-(31, 0, 'SÉT ÁO VÁY DEMIN THU', '1714903515.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '30000'),
-(32, 0, 'SET JADE PLAN T', '1714903600.webp', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '5000000'),
-(33, 0, 'QUẦN ÂU ỐNG LOE', '1714903636.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '400000'),
+(30, 3, 'SET ÁO VÁY MONSTER ', '1714903570.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '70000000'),
+(31, 3, 'SÉT ÁO VÁY DEMIN THU', '1714903515.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '30000'),
+(32, 3, 'SET JADE PLAN T', '1714903600.webp', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '5000000'),
+(33, 3, 'QUẦN ÂU ỐNG LOE', '1714903636.png', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '400000'),
 (34, 2, 'QUẦN ÂU ỐNG ĐỨNG', '1714903665.webp', 'Chân váy midi vải dạ dáng xòe xếp ly cạp liền bản to khóa thân sau   Thương hiệu: PANTIO  Kiểu dáng: Chân váy midi vải dạ thiết kế dáng xòe xếp ly cạp liền bản to khóa thân sau   Chất liệu: Chân váy công sở nữ có thành phần Dạ - 70% Polyeste 30% Rayon  Mà', '400000');
 
 -- --------------------------------------------------------
