@@ -38,16 +38,22 @@ if (is_array($dm)) {
                             <form action="index.php?act=capnhatSP" method="post" enctype="multipart/form-data">
                                 <div class="row gy-3 gy-md-4 overflow-hidden">
                                     <div class="col-12">
-                                        <label for="email" class="form-label fw-bold">Tên sản phẩm
+                                        <label for="text" class="form-label fw-bold">Tên sản phẩm
                                             <span class="text-danger">*</span></label>
                                         <input type="name" class="form-control" name="ten" id="ten" placeholder="" value="<?php if (isset($TenSanPham) && ($TenSanPham != ""))
                                                                                                                                 echo $TenSanPham; ?>" required>
                                     </div>
                                     <div class="col-12">
-                                        <label for="email" class="form-label fw-bold">Giá bán
+                                        <label for="text" class="form-label fw-bold">Giá bán
                                             <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" name="gia" id="gia" placeholder="" value="<?php if (isset($GiaBan) && ($GiaBan != ""))
                                                                                                                                 echo $GiaBan; ?>" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="text" class="form-label fw-bold">Loại
+                                            <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="loaiDo" id="gia" placeholder="" value="<?php if (isset($tenLoai) && ($tenLoai != ""))
+                                                                                                                                echo $tenLoai; ?>" required>
                                     </div>
                                     <input class="btn btn-primary" type="hidden" value="<?php if (isset($MaSanPham) && ($MaSanPham != ""))
                                                                                             echo $MaSanPham; ?>" name="MaSanPham">
