@@ -1,5 +1,6 @@
 
 <!-- Login 4 - Bootstrap Brain Component -->
+
 <section class="p-3 p-md-4 p-xl-5">
     <div class="container">
         <div class="card border-light-subtle shadow-sm">
@@ -9,36 +10,24 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-5 fw-bold">
-                                    <h3>ĐĂNG NHẬP</h3>
+                                    <h3>LẤY LẠI MẬT KHẨU</h3>
                                 </div>
                             </div>
                         </div>
-                        <form action="./view/DangNhap/CheckLogin.php" method="post">
+                        <form action="./view/DangNhap/guiemail.php" method="POST">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
-                                    <label for="email" class="form-label fw-bold">Email
+                                    <label for="email" class="form-label fw-bold">Vui lòng nhập email
                                         <span class="text-danger">*</span></label>
                                     <input type="email" class="form-control" name="email" id="email" placeholder="ten@gmail.com" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="password" class="form-label fw-bold">Mật khẩu
-                                        <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="mật khẩu" required>
-                                </div>
-
-                                <div class="col-12">
                                     <div class="d-grid">
-                                        <button class="btn bsb-btn-xl btn-primary" type="submit">Đăng nhập</button>
+                                        <button class="btn bsb-btn-xl btn-primary" type="submit">Lấy lại mật khẩu</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
-                        <div class="row">
-
-
-                            <a href="index.php?act=qmk"class="link-secondary text-decoration-none fw-bold">Quên mật khẩu</a>
-
-                        </div>
                     </div>
 
                 </div>

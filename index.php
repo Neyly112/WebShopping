@@ -188,6 +188,10 @@
 
                 header("Location: ./index.php?act=buy&MaSanPham=$maSP&TenSanPham=$ten&GiaBan=$giaBan&HinhAnh=$hinhanh&data-product-id=$maSP");
                 break;
+            case 'qmk':
+                include './view/DangNhap/quenmk.php';
+                break;
+
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
