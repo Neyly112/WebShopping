@@ -1,6 +1,6 @@
 <div class="col-lg-3 mb-4">
     <div class="list-group">
-        <h2>Các loại sản phẩm</h2>
+        <h2>DANH MỤC</h2>
         <?php
         include('./dbconnect.php');
 
