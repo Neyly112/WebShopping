@@ -108,10 +108,12 @@ while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 <?php endforeach; ?>
 
             </div>
+            <div class="text-right">
+                <button id="buyBtn" class="btn btn-success" style="font-size: 18px;">Mua hàng</button>
+            </div>
 
-        </div>
-        <div class="float-right">
-            <button id="buyBtn" class="btn btn-success" style="font-size: 18px;">Mua hàng</button>
+
+
         </div>
     </div>
 </section>

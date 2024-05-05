@@ -3,12 +3,14 @@
     .btn.btn-outline-dark.btn-floating {
         border: none;
     }
+
+    /* Tạo khung tròn cho hình ảnh */
     .btn.btn-outline-dark.btn-floating img {
-        /* Tạo khung tròn */
         border-radius: 50%;
         width: 30px;
         height: 30px;
     }
+
 </style>
 
 <div class="container my-5">
@@ -51,7 +53,6 @@
                             ?>
                         </div>
                     </div>
-
                     <!-- Grid column -->
 
                     <!-- Grid column -->
@@ -65,40 +66,44 @@
                     <!-- Grid column -->
                 </div>
                 <!--Grid row-->
-                <section class="p-3 pt-0">
-                    <div class="row d-flex align-items-center">
-                        <!-- Grid column -->
-                        <div class="col-md-7 col-lg-8 text-center text-md-start">
-                            <!-- Copyright -->
-                            <div class="p-3">
-                                © 2020 Copyright:
-                                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-                            </div>
-                            <!-- Copyright -->
+            </section>
+            <!-- Section: Links -->
+
+            <!-- Section: Social media links -->
+            <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                    <!-- Grid column -->
+                    <div class="col-md-7 col-lg-8 text-center text-md-start">
+                        <!-- Copyright -->
+                        <div class="p-3">
+                            © 2020 Copyright:
+                            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
                         </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                            <!-- Facebook -->
-                            <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://m.me/baotran53?hash=AbYwrnd48PUpeKNE"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
-
-                            <!-- zalo -->
-                            <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://zalo.me/0836982239"><img src="https://img.icons8.com/color/48/zalo.png" alt="Twitter"></a>
-
-                            <!-- Google -->
-                            <a class="btn btn-outline-dark btn-floating m-1" role="button" href="#"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google"></a>
-
-                            <!-- Instagram -->
-                            <a class="btn btn-outline-dark btn-floating m-1" role="button" href="#"><img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram"></a>
-                        </div>
-                        <!-- Grid column -->
+                        <!-- Copyright -->
                     </div>
-                </section>
-                <!-- Section: Copyright -->
-            </div>
-            <!-- Grid container -->
-        </footer>
-        <!-- Footer -->
-    </div>
-    <!-- End of .container -->
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                        <!-- Facebook -->
+                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://m.me/baotran53?hash=AbYwrnd48PUpeKNE"><img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook"></a>
+
+                        <!-- Zalo -->
+                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://zalo.me/0836982239"><img src="https://img.icons8.com/color/48/zalo.png" alt="Zalo"></a>
+
+                        <!-- Google -->
+                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="#"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google"></a>
+
+                        <!-- Instagram -->
+                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://www.instagram.com/ongnau53"><img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram"></a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+            </section>
+            <!-- Section: Social media links -->
+        </div>
+        <!-- Grid container -->
+    </footer>
+    <!-- Footer -->
+</div>
+<!-- End of .container -->
