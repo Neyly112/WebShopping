@@ -198,6 +198,11 @@
             case 'checkmk':
                 include'../view/TaiKhoan/checkmk.php';
                 break;
+            case 'dx':
+                    include'../view/DangXuat/DangXuat.php';
+                    break;
+            
+
             default:
                 
                 break;     
