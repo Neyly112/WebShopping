@@ -1,88 +1,67 @@
 <?php
-require_once "./dbconnect.php"
-?>
-<div class="container mt-5">
-    <div class="row">
-        <div id="cacDonHang" class="col-7 overflow-auto" style="height: 500px;">
-            <?php
-            $email = "demo@gmail.com";
-            if ($conn == true) { // Nếu kết nối thành công
-
-                $query = "SELECT MaDonHang, NgayTao, HoTen, SoDienThoai, DiaChiGiaoHang, tongtien, PhuongThucThanhToan
-                    from donhang where email = '{$email}'";
-                $result = mysqli_query($conn, $query);
-            }
-            ?>
-            <?php while ($row = mysqli_fetch_array($result)) : ?>
-                <div id="<?php echo $row["MaDonHang"]; ?>" class="card mb-2" onclick="ShowChiTiet(this.id);">
+function ShowCacDonHang()
+{ // Show các đơn hàng vừa đặt
+    try {
+        require_once './dbconnect.php';
+        if ($conn == true) { // Nếu kết nối thành công
+            $danhSachDonHang = implode(',', $_SESSION['DanhSachDonHang']);
+            $query = "SELECT MaDonHang, NgayTao, HoTen, SoDienThoai, DiaChiGiaoHang, tongtien, PhuongThucThanhToan 
+                            from donhang 
+                            where MaDonHang in ({$danhSachDonHang})";
+            $result = mysqli_query($conn, $query);
+        }
+        else {
+            return;
+        }
+        while ($row = mysqli_fetch_array($result)) {
+            echo '
+                <div id="'.$row["MaDonHang"].'" class="card mb-2" onclick="ShowChiTiet(this.id);">
                     <div class="card-header">
-                        <p class="card-text">Đơn hàng: <?php echo $row["MaDonHang"]; ?></p>
+                        <p class="card-text">Đơn hàng: '.$row["MaDonHang"].'</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-4 text-end">Ngày tạo đơn :</div>
-                            <div class="col"><?php echo $row["NgayTao"]; ?></div>
+                            <div class="col">'.$row["NgayTao"].'</div>
                         </div>
                         <div class="row">
                             <div class="col-4 text-end">Người nhận :</div>
-                            <div class="col"><?php echo $row["HoTen"]; ?></div>
+                            <div class="col">'.$row["HoTen"].'</div>
                         </div>
                         <div class="row">
                             <div class="col-4 text-end">Số điện thoại :</div>
-                            <div class="col"><?php echo $row["SoDienThoai"]; ?></div>
+                            <div class="col">'.$row["SoDienThoai"].'</div>
                         </div>
                         <div class="row">
                             <div class="col-4 text-end">Địa chỉ :</div>
-                            <div class="col"><?php echo $row["DiaChiGiaoHang"]; ?></div>
+                            <div class="col">'.$row["DiaChiGiaoHang"].'</div>
                         </div>
                         <div class="row">
                             <div class="col-4 text-end">Tổng tiền :</div>
-                            <div class="col"><?php echo number_format($row["tongtien"], 0, ',', '.') . " VNĐ"; ?></div>
+                            <div class="col">'.number_format($row["tongtien"], 0, ',', '.') . " VNĐ".'</div>
                         </div>
                         <div class="row">
                             <div class="col-4 text-end">Phương thức thanh toán :</div>
-                            <div class="col"><?php echo $row["PhuongThucThanhToan"]; ?></div>
+                            <div class="col">'.$row["PhuongThucThanhToan"].'</div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#modalHuyDonHang">Hủy đơn hàng</button>
                     </div>
                 </div>
-            <?php endwhile; ?>
-            <!-- <div class="card">
-                <div class="card-header">
-                    <p class="card-text">Đơn hàng: 0000</p>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4 text-end">Ngày tạo đơn :</div>
-                        <div class="col">1-1-2024</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-end">Người nhận :</div>
-                        <div class="col">sáng</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-end">Số điện thoại :</div>
-                        <div class="col">1234567890</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-end">Địa chỉ :</div>
-                        <div class="col">Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7, Quận 7</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-end">Tổng tiền :</div>
-                        <div class="col">100000</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-end">Phương thức thanh toán :</div>
-                        <div class="col">Thanh toán khi nhận hàngasdfasdfasd fasf asdf asdf asdfasdfasddf asdfasf asdf ádfasdfasdf</div>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-danger float-end">Hủy đơn hàng</button>
-                </div>
-            </div> -->
+            ';
+        }
+    }
+    catch (Exception $ex) {
+        echo '<p class="text-secondary">Bạn chưa đặt đơn hàng nào</p>';
+    }
+}
+?>
+
+<div class="container mt-5">
+    <div class="row">
+        <div id="cacDonHang" class="col-7 overflow-auto" style="height: 500px;">
+            <?php ShowCacDonHang(); ?>
         </div>
         <div class="col-5">
             <p class="display-6">Chi tiết đơn hàng</p>
@@ -161,7 +140,6 @@ require_once "./dbconnect.php"
 
 </div>
 <script defer>
-
     // Ẩn các alert message
     $("#thatBai").hide();
     $("#thanhCong").hide();
@@ -192,8 +170,7 @@ require_once "./dbconnect.php"
                 console.log("#" + maDonHang);
                 $("#thanhCong").fadeIn(2000).fadeOut(2000);
                 $("#" + maDonHang).remove();
-            } 
-            else {
+            } else {
                 $("#thatBai").fadeIn(2000).fadeOut(2000);
             }
         });
