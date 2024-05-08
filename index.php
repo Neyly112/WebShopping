@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <div>
     <?php
     include "./model/pdo.php";
@@ -14,8 +18,12 @@
 
     
     if (isset($_GET['act'])) {
-        $act = $_GET['act'];
 
+        if (isset($_SESSION["DanhSachDonHang"]) == false) { //Khởi tạo biến session danh sách đơn hàng
+            $_SESSION['DanhSachDonHang'] = [];
+        }
+
+        $act = $_GET['act'];
         switch ($act) {
             case 'gtyt':
                 include('./dbconnect.php');
@@ -117,11 +125,13 @@
                     $sdt = $_GET['sdt'];
                     $diachi = $_GET['diachi'];
 
-
                     $sql = "INSERT INTO donhang (MaDonHang, tongtien, HoTen, SoDienThoai, DiaChiGiaoHang) VALUES ('$MaDonHang', '$tongGiaBan', '$hoten', '$sdt', '$diachi')";
                     pdo_executer($sql);
                     $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
                     pdo_executer($sql2);
+
+                    $_SESSION['DanhSachDonHang'][] = $MaDonHang;
+
                     $thongbao = "Đặt hàng thành công";
                     header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
                     exit();
@@ -154,6 +164,9 @@
                         $sql2 = "INSERT INTO ctdh (MaDonHang, MaSanPham, soluong) VALUES ('$MaDonHang', '$MaSanPham', '$soluong')";
                         pdo_executer($sql2);
                     }
+
+                    $_SESSION['DanhSachDonHang'][] = $MaDonHang;
+
                     $thongbao = "Đặt hàng thành công";
                     header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
                     exit();
