@@ -196,18 +196,21 @@
                 include '../view/TaiKhoan/doimatkhau.php';
                 break;
             case 'checkmk':
-                include'../view/TaiKhoan/checkmk.php';
+                include '../view/TaiKhoan/checkmk.php';
                 break;
             case 'dx':
-                    include'../view/DangXuat/DangXuat.php';
-                    break;
-            
+                include '../view/DangXuat/DangXuat.php';
+                break;
+
+            case 'qldh': // Quản lý đơn hàng
+                include 'QuanLyDonHang/QuanLyDonHang.php';
+                break;
 
             default:
-                
-                break;     
+
+                break;
         }
-    } 
+    }
 
 
     ?>

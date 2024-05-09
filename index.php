@@ -47,6 +47,7 @@ session_start();
                 include "./crud/crud_giohang/index.php";
                 mysqli_close($conn);
                 break;
+
             case 'tc':
                 include "./view/TrangChu/TrangChu.php";
                 break;
@@ -54,6 +55,7 @@ session_start();
             case 'gttt':
                 include "./view/ThongTin/ThongTin.php";
                 break;
+                
             case 'xoagiohang':
 
                 $sql1 = "SELECT * FROM `sanphamgiohang`";
@@ -82,6 +84,7 @@ session_start();
                 $list = pdo_query($sql1);
                 include "./crud/crud_giohang/index.php";
                 break;
+
             case 'addcart':
                 if (isset($_GET['MaSanPham'])) {
                     $MaSanPham = $_GET['MaSanPham'];
@@ -91,12 +94,15 @@ session_start();
                 }
                 include "./view/TrangChu/TrangChu.php";
                 break;
+
             case 'buy':
                 include "./view/DatHang/Dathang.php";
                 break;
+
             case 'buycart':
                 include "./view/DatHang/Dathang_to_cart.php";
                 break;
+
             case 'listSp':
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
                     $maLoai = $_GET['MaLoai'];
@@ -180,6 +186,7 @@ session_start();
             case 'dangnhap':
                 include "./view/DangNhap/DangNhap.php";
                 break;
+
             case 'chitietsp':
                 $sql = "SELECT * FROM `sanpham` WHERE MaSanPham =" . $_GET['MaSanPham'];
                 $result = pdo_query_one($sql);
@@ -211,6 +218,8 @@ session_start();
                 include "./view/DonHangCuaToi/DonHangCuaToi.php";
                 break;
 
+            default:
+                echo 'here';
         }
     } else {
         include "./view/TrangChu/TrangChu.php";
