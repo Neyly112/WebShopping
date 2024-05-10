@@ -125,7 +125,9 @@ function ShowCacDonHang()
     $('#timKiemDonHang').submit(function(event) {
         event.preventDefault();
         let text = $('#textSearch').val();
+        console.log(text);
         $.get(`QuanLyDonHang/GetDonHang.php?searchValue=${text}`, function(data, status) {
+            console.log(data);
             $('#danhSachDonHang').html(data);
         });
     });

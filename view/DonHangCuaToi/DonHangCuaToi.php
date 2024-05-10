@@ -4,7 +4,8 @@ function ShowCacDonHang()
     try {
         require_once './dbconnect.php';
         if ($conn == true) { // Nếu kết nối thành công
-            $danhSachDonHang = implode(',', $_SESSION['DanhSachDonHang']);
+            $danhSachDonHang = implode(',', $_SESSION['DanhSachDonHang']); // Tạo thành list 2343, 1243, 1245
+
             $query = "SELECT MaDonHang, NgayTao, HoTen, SoDienThoai, DiaChiGiaoHang, tongtien, PhuongThucThanhToan 
                             from donhang 
                             where MaDonHang in ({$danhSachDonHang})";
@@ -93,35 +94,4 @@ function ShowCacDonHang()
 
 </div>
 
-<script defer>
-
-    function ShowChiTiet(maDonHang) {
-        // console.log(maDonHang);
-        $.ajax({
-            url: `view/DonHangCuaToi/ajax-getChiTietDonHang.php?idDonHang=${maDonHang}`,
-            method: "GET",
-            success: function(response) {
-                // console.log(response);
-                $("#chiTietDonHang").html(response);
-            }
-        });
-    }
-
-    // // Hủy đơn hàng
-    // function HuyDonHang(maDonHang) {
-    //     // console.log(maDonHang);
-    //     let url = `view/DonHangCuaToi/HuyDonHang.php?maDonHang=${maDonHang}`;
-    //     $.get(url, function(data, status) {
-    //         let data2 = JSON.parse(data);
-    //         let isSuccess = data2["status"];
-    //         if (isSuccess == true) {
-    //             console.log("#" + maDonHang);
-    //             $("#thanhCong").fadeIn(2000).fadeOut(2000);
-    //             $("#" + maDonHang).remove();
-    //         } else {
-    //             $("#thatBai").fadeIn(2000).fadeOut(2000);
-    //         }
-    //     });
-    // }
-</script>
-<!-- <script src="app.js" defer></script> -->
+<script src="view/DonHangCuaToi/app.js" defer></script>
