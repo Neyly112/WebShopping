@@ -33,6 +33,14 @@ function ShowCacDonHang()
 
 ?>
 <div class="container mt-3">
+
+    <form id="timKiemDonHang" class="d-flex" action="QuanLyDonHang/GetDonHang.php?" method="get">
+        <div class="input-group">
+            <input id="textSearch" class="form-control me-1" type="search" placeholder="Nhập mã đơn hàng, hoặc tên người đặt hàng" aria-label="Search" name="searchValue">
+            <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+        </div>
+    </form>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -46,7 +54,7 @@ function ShowCacDonHang()
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="danhSachDonHang">
             <?php ShowCacDonHang(); ?>
         </tbody>
     </table>
@@ -112,3 +120,14 @@ function ShowCacDonHang()
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="QuanLyDonHang/app.js" defer></script>
+<script defer>
+
+    $('#timKiemDonHang').submit(function(event) {
+        event.preventDefault();
+        let text = $('#textSearch').val();
+        $.get(`QuanLyDonHang/GetDonHang.php?searchValue=${text}`, function(data, status) {
+            $('#danhSachDonHang').html(data);
+        });
+    });
+    
+</script>
