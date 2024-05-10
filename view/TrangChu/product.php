@@ -30,7 +30,7 @@ $page_description = htmlspecialchars_decode(htmlspecialchars_decode($moTa));
             <a href="index.php?act=addcart&MaSanPham=<?php echo $_GET['MaSanPham']; ?>" style="color: white; text-decoration: none;">Thêm vào giỏ hàng</a>
         </button>
         <button style='width:100%;' type='submit' class='btn btn-success'>
-            <a href="index.php?act=buy&MaSanPham=<?php echo $_GET['MaSanPham']; ?>&TenSanPham=<?php echo $_GET['TenSanPham']; ?>&GiaBan=<?php echo $_GET['GiaBan']; ?>&HinhAnh=<?php echo $_GET['HinhAnh']; ?>"style="color: white; text-decoration: none;  data-product-id="<?php echo $_GET['MaSanPham']; ?>"">Mua hàng</a>
+            <a href="index.php?act=buy&MaSanPham=<?php echo $_GET['MaSanPham']; ?>&TenSanPham=<?php echo $_GET['TenSanPham']; ?>&GiaBan=<?php echo $_GET['GiaBan']; ?>&HinhAnh=<?php echo $_GET['HinhAnh']; ?>"style="color: white; text-decoration: none;  data-product-id="<?php echo $_GET['MaSanPham']; ?>>Mua hàng</a>
         </button>
     
     </form>

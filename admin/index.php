@@ -111,18 +111,17 @@
                     $tenLoai = $_POST['tenLoai'];
                     $sql = "INSERT INTO `loai`(`TenLoai`) VALUES ('$tenLoai')";
                     pdo_executer($sql);
-                    $thongbao = "Thêm Thành Công";
-                }
+                    echo '<script language="javascript">';
+                    echo 'alert("Thêm thành công")';
+                    echo '</script>';
+                } 
                 $sql1 = "SELECT * FROM `loai`";
                 $list = pdo_query($sql1);
                 include "../view/LoaiSanPham/ThemLoaiSP.php";
                 break;
             case 'xoaLoai':
-
                 $sql1 = "SELECT * FROM `loai`";
                 $list = pdo_query($sql1);
-
-
                 if (isset($_GET['MaLoai']) && ($_GET['MaLoai'] > 0)) {
                     $sql2 = "DELETE FROM `loai` WHERE MaLoai=" . $_GET['MaLoai'];
                     try {
