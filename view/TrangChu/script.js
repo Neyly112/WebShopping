@@ -1,5 +1,3 @@
-
-
 // Function to show the success message and auto-close it after a certain time
 function showSuccessMessage() {
     var successMessage = document.createElement("div");

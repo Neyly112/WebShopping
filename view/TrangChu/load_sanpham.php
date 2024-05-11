@@ -1,4 +1,4 @@
-<script src="./view/TrangChu/script.js"></script>
+<script src="./view/TrangChu/script.js" defer></script>
 
 <?php
 include('./dbconnect.php');

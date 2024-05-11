@@ -12,7 +12,6 @@
 <div>
     <?php
 
-
     if (isset($_GET['act'])) {
         $act = $_GET['act'];
 
@@ -207,13 +206,24 @@
                 break;
 
             default:
-
                 break;
         }
     }
 
-
     ?>
+
+    <!-- Phần thông báo -->
+    <div class="position-fixed top-0 end-0 mt-2 me-2">
+        <div id="successMessage" class="alert alert-success d-none" role="alert">
+            <strong>Success!</strong> Thành công
+        </div>
+    </div>
+    <div class="position-fixed top-0 end-0 ">
+        <div id="failMessage" class="alert alert-danger d-none" role="alert">
+            <strong>Fail!</strong>Thất bại
+        </div>
+    </div>
+    
 </div>
 
 <div>

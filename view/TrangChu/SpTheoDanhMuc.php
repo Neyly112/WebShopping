@@ -36,9 +36,22 @@
         <!-- end slider-->
         <div class="row mb-4">
             <div class="col">
-                <h2 style="font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: bold" class="text-center mb-4 mt-4">TẤT CẢ SẢN PHẨM LOẠI <?= $tenLoai ?> </h2>
+                
+                <?php
+                $maLoai = $_REQUEST['MaLoai'];
+                $tenLoai = '';
 
+                if (($conn = mysqli_connect('127.0.0.1', 'root', '', 'qlbh')) == true) {
+                    $query = "SELECT TenLoai from loai where MaLoai = {$maLoai}";
+                    $result = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($result) == 1) {
+                        $row = mysqli_fetch_assoc($result);
+                        $tenLoai = $row['TenLoai'];
+                    }
+                }
+                ?>
 
+                <h2 style="font-family: 'Roboto', sans-serif; font-size: 24px; font-weight: bold; text-transform: uppercase;" class="text-center mb-4 mt-4">TẤT CẢ SẢN PHẨM LOẠI <?php echo $tenLoai ?> </h2>
             </div>
         </div>
         <div class="row">

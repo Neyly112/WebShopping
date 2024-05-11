@@ -118,39 +118,32 @@
     document.getElementById('dathangButton').addEventListener('click', function(event) {
         event.preventDefault(); // Ngăn chặn hành động mặc định của nút submit
 
-        var soluongInput = document.getElementById('soluong').value;
-        var MaSanPham = <?php echo $MaSanPham; ?>;
-        var giaban = <?php echo $GiaBan; ?>;
-        var hoten = document.getElementById('hoten').value; // Lấy giá trị từ trường họ tên
-        var diachi = document.getElementById('diachi').value; // Lấy giá trị từ trường địa chỉ
-        var sdt = document.getElementById('sdt').value; // Lấy giá trị từ trường số điện thoại
-        var tongGiaBan = soluongInput * giaban;
+        let soluongInput = document.getElementById('soluong').value;
+        let MaSanPham = <?php echo $MaSanPham; ?>;
+        let giaban = <?php echo $GiaBan; ?>;
+        let hoten = document.getElementById('hoten').value; // Lấy giá trị từ trường họ tên
+        let diachi = document.getElementById('diachi').value; // Lấy giá trị từ trường địa chỉ
+        let sdt = document.getElementById('sdt').value; // Lấy giá trị từ trường số điện thoại
+        let tongGiaBan = soluongInput * giaban;
         
         // Kiểm tra xem các trường đã được điền đầy đủ hay không
         if (hoten !== '' && diachi !== '' && sdt !== '') {
-            var newURL = 'index.php?act=datdonhang&MaSanPham=' + MaSanPham + '&tonggiaban=' + tongGiaBan + '&soluong=' + soluongInput + '&hoten=' + hoten + '&sdt=' + sdt + '&diachi=' + diachi;
+            let newURL = 'index.php?act=datdonhang&MaSanPham=' + MaSanPham + '&tonggiaban=' + tongGiaBan + '&soluong=' + soluongInput + '&hoten=' + hoten + '&sdt=' + sdt + '&diachi=' + diachi;
             window.location.href = newURL;
         } 
     });
 </script>
 
-
-
 <script>
-    var soluongInput = document.getElementById('soluong');
+    
+    let soluongInput = document.getElementById('soluong');
 
     soluongInput.addEventListener('input', function() {
-
-        var soluong = parseInt(soluongInput.value);
-
-
-        var giaban = <?php echo $GiaBan; ?>;
-
-
-        var tongGiaBan = soluong * giaban;
-
-
-        var tongGiaBanElement = document.getElementById('tongGiaBan');
+        let soluong = parseInt(soluongInput.value);
+        let giaban = <?php echo $GiaBan; ?>;
+        let tongGiaBan = soluong * giaban;
+        let tongGiaBanElement = document.getElementById('tongGiaBan');
         tongGiaBanElement.textContent = tongGiaBan + 'đ';
     });
+
 </script>

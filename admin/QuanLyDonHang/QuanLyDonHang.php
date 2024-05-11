@@ -105,7 +105,7 @@ function ShowCacDonHang()
         </div>
     </div>
 
-    <div class="position-fixed top-0 end-0 mt-2 me-2">
+    <!-- <div class="position-fixed top-0 end-0 mt-2 me-2">
         <div id="successMessage" class="alert alert-success d-none" role="alert">
             <strong>Success!</strong> Thành công
         </div>
@@ -114,7 +114,7 @@ function ShowCacDonHang()
         <div id="failMessage" class="alert alert-danger d-none" role="alert">
             <strong>Fail!</strong>Thất bại
         </div>
-    </div>
+    </div> -->
 
 </div>
 
@@ -122,10 +122,11 @@ function ShowCacDonHang()
 <script src="QuanLyDonHang/app.js" defer></script>
 <script defer>
 
+    // Tìm kiếm đơn hàng
     $('#timKiemDonHang').submit(function(event) {
         event.preventDefault();
         let text = $('#textSearch').val();
-        console.log(text);
+        // console.log(text);
         $.get(`QuanLyDonHang/GetDonHang.php?searchValue=${text}`, function(data, status) {
             console.log(data);
             $('#danhSachDonHang').html(data);
