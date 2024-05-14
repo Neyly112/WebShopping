@@ -10,9 +10,6 @@
     /* Add padding for spacing */
   }
 </style>
-<!--begin navbar-->
-<!--end navbar-->
-<!--Page content-->
 
 <div class="container p-4 text-dark text-center" style="font-weight: 500;">
   Danh Sách Tìm Kiếm
@@ -29,11 +26,21 @@
     </div>
 </div>
 
+<script type="text/javascript" src="app.js" defer></script>
+<script type="text/javascript" defer>
 
-
-
-<!--end product-->
-
-<!--end Page content-->
-<!--footer-->
-<!--end footer-->
+    // Thêm vào giỏ hàng
+    function ThemVaoGioHang(maSanPham) { // Thẻ <a> của link sản phẩm
+        console.log(maSanPham);
+        $.get(`GioHangController.php?act=addSanPham&maSanPham=${maSanPham}`, function(data, status) {
+            let jsonData = JSON.parse(data);
+            if (jsonData['status'] == true) {
+                // console.log(jsonData['message']);
+                SuccessAction(jsonData['message']);
+            } else {
+                FailAction(jsonData['message']);
+            }
+        });
+    }
+    
+</script>

@@ -8,7 +8,7 @@ function ShowCacDonHang()
 
             $query = "SELECT MaDonHang, NgayTao, HoTen, SoDienThoai, DiaChiGiaoHang, tongtien, PhuongThucThanhToan 
                             from donhang 
-                            where MaDonHang in ({$danhSachDonHang})";
+                            where MaDonHang in ({$danhSachDonHang}) order by NgayTao desc";
             $result = mysqli_query($conn, $query);
         } else {
             return;

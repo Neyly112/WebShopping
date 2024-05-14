@@ -266,7 +266,9 @@ include "./model/pdo.php";
                         $_SESSION['DanhSachDonHang'][] = $MaDonHang;
 
                         $thongbao = "Đặt hàng thành công";
-                        header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
+                        
+                        echo "<script>location.href = './view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang';</script>";
+                        // header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
                         exit();
                     } else {
                         $thongbao = "lỗi";
@@ -301,8 +303,9 @@ include "./model/pdo.php";
                         $_SESSION['DanhSachDonHang'][] = $MaDonHang;
 
                         $thongbao = "Đặt hàng thành công";
-                        header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
-                        exit();
+                        echo "<script>location.href = './view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang';</script>";
+                        // header("Location: ./view/DatHang/hoantatthanhtoan.php?act=hoantatthanhtoan&MaDonHang=$MaDonHang");
+                        exit;
                     } else {
                         // Xử lý trường hợp không thành công
                         $thongbao = "Lỗi khi đặt hàng";

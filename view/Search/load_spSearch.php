@@ -48,7 +48,8 @@ if ($result->num_rows > 0) {
         echo '<div class="d-flex justify-content-between">';
         
         // Thêm vào giỏ hàng
-        echo '<a href="index.php?act=addcart&MaSanPham=' . $row['MaSanPham'] . '"onclick="showSuccessMessage()">';
+        // echo '<a href="index.php?act=addcart&MaSanPham=' . $row['MaSanPham'] . '"onclick="showSuccessMessage()">';
+        echo '<a href="javascript:void(0);" data-product-id="' . $row['MaSanPham'] . '" onclick="ThemVaoGioHang($(this).attr(`data-product-id`));">';
         echo ' <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-dash rounded-svg" viewBox="0 0 16 16" data-product-id="' . $row['MaSanPham'] . '">';
         echo '<path fill-rule="evenodd" d="M5.5 10a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"/>';
         echo '<path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>';

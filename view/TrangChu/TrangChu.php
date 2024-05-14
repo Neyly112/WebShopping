@@ -72,6 +72,7 @@
     });
 
     function ThemVaoGioHang(maSanPham) { // Thẻ <a> của link sản phẩm
+        console.log(maSanPham);
         $.get(`GioHangController.php?act=addSanPham&maSanPham=${maSanPham}`, function(data, status) {
             let jsonData = JSON.parse(data);
             if (jsonData['status'] == true) {

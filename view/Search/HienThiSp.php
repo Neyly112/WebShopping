@@ -9,9 +9,7 @@
         /* Add padding for spacing */
     }
 </style>
-<!--begin navbar-->
-<!--end navbar-->
-<!--Page content-->
+
 <div class="container w-50">
     <form class="d-flex" action="">
         <input class="form-control me-2" type="text" placeholder="Search" name="search">
@@ -34,12 +32,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!--end product-->
-
-<!--end Page content-->
-<!--footer-->
-<!--end footer-->
