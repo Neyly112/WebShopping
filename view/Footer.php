@@ -92,7 +92,7 @@
                         <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://zalo.me/0836982239"><img src="https://img.icons8.com/color/48/zalo.png" alt="Zalo"></a>
 
                         <!-- Google -->
-                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="#"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google"></a>
+                        <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://wbh20041.000webhostapp.com/"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google"></a>
 
                         <!-- Instagram -->
                         <a class="btn btn-outline-dark btn-floating m-1" role="button" href="https://www.instagram.com/ongnau53"><img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram"></a>
