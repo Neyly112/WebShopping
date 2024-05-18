@@ -177,6 +177,9 @@ ALTER TABLE `sanphamgiohang`
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
+ALTER TABLE `loai`
+  MODIFY `MaLoai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
 --

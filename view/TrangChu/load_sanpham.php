@@ -18,7 +18,7 @@ $page = max(min($page, $totalPages), 1);
 
 $start = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM SanPham LIMIT $start, $limit";
+$sql = "SELECT * FROM sanpham LIMIT $start, $limit";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

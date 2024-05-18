@@ -18,7 +18,7 @@
     $limit = 12; // Số lượng sản phẩm hiển thị trên mỗi trang
 
     // Tính tổng số sản phẩm
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM SanPham WHERE MaLoai =  $maLoai"));
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM sanpham WHERE MaLoai =  $maLoai"));
     // Tính tổng số trang cần phải hiển thị
     $totalPages = ceil($totalRows / $limit);
 
@@ -29,7 +29,7 @@
 
     $start = ($page - 1) * $limit;
 
-    $sql = "SELECT * FROM SanPham WHERE MaLoai = $maLoai LIMIT $start, $limit";
+    $sql = "SELECT * FROM sanpham WHERE MaLoai = $maLoai LIMIT $start, $limit";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
