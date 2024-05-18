@@ -135,7 +135,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`email`, `password`) VALUES
-('nhung@gmail.com', '123');
+('embemay772023@gmail.com', '123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
