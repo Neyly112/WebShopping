@@ -1,6 +1,6 @@
 # WebShopping
 
-Professional WebShopping — a production-minded e-commerce web application built primarily with PHP and Hack, with supporting JavaScript, CSS and HTML. This single README combines a concise professional project overview with a concrete Functions & Tasks backlog to guide development, onboarding, and contribution.
+WebShopping — a production-minded e-commerce web application built primarily with PHP and Hack, with supporting JavaScript, CSS and HTML. This single README combines a concise professional project overview with a concrete Functions & Tasks backlog to guide development, onboarding, and contribution.
 
 [![Language](https://img.shields.io/badge/Primary-PHP%20%2F%20Hack-blue)]()
 [![Status](https://img.shields.io/badge/Status-Active-green)]()
@@ -8,7 +8,7 @@ Professional WebShopping — a production-minded e-commerce web application buil
 
 ---
 
-## Professional overview
+## Overview
 
 WebShopping is an extensible e-commerce platform designed for local and regional stores, marketplaces, and demo storefronts. It focuses on reliable catalog management, secure checkout, inventory control, promotions, and operational reporting. The codebase contains PHP and Hack code (HHVM), with frontend behaviors in JavaScript and styling in CSS/HTML.
 
